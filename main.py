@@ -40,7 +40,7 @@ cls()
 # Création des objets
 # TODO: récupérer les attributs via un menu de configuration
 l = Labyrinthe(20,10)
-joueur = Joueur("X",100)
+joueur = Joueur.getInstance("X", 100)
 l.deposerJoueurAleatoirement(joueur)
 
 # Generation de 70 potions aléatoirement
