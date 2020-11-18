@@ -2,7 +2,8 @@ from labyrinthe.labyrinthe import Labyrinthe
 from joueur import Joueur
 
 from objets.potion import Potion
-from personnes.perroquet import Perroquet
+from personnesFactory import PersonnesFactoryPrincipale
+
 
 import random
 
@@ -43,6 +44,12 @@ l = Labyrinthe(20,10)
 joueur = Joueur("X",100)
 l.deposerJoueurAleatoirement(joueur)
 
+#On ajouter les factory des peronnes
+factoryPersonne = PersonnesFactoryPrincipale.getInstance()
+factoryPersonne.loadFactoryPlugins()
+
+
+
 # Generation de 70 potions aléatoirement
 for i in range(70):
     potion = Potion(random.randint(5,10))
@@ -50,7 +57,7 @@ for i in range(70):
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(Perroquet(random.choice(['vert','bleu','rouge','orange','jaune','rose','violet'])))
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
 
 while True:
     cls()  # Effacer la console
