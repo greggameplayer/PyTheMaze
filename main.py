@@ -6,10 +6,12 @@ from personnes.perroquet import Perroquet
 
 import random
 
-
 import os
+
+
 def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 # now, to clear the screen
 
@@ -34,23 +36,23 @@ print("""
 """)
 input("   Appuyer sur 'Entrée' pour entrer dans le labyrinthe")
 
-
 cls()
 
 # Création des objets
 # TODO: récupérer les attributs via un menu de configuration
-l = Labyrinthe(20,10)
-joueur = Joueur("X",100)
+l = Labyrinthe.getInstance()
+joueur = Joueur("X", 100)
 l.deposerJoueurAleatoirement(joueur)
 
 # Generation de 70 potions aléatoirement
 for i in range(70):
-    potion = Potion(random.randint(5,10))
+    potion = Potion(random.randint(5, 10))
     l.deposerObjetAleatoirement(potion)
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(Perroquet(random.choice(['vert','bleu','rouge','orange','jaune','rose','violet'])))
+    l.deposerPersonneAleatoirement(
+        Perroquet(random.choice(['vert', 'bleu', 'rouge', 'orange', 'jaune', 'rose', 'violet'])))
 
 while True:
     cls()  # Effacer la console
@@ -89,7 +91,7 @@ while True:
         case = joueur.getCaseCourante()
         personnages = case.getPersonnages()
         objets = case.getObjets()
-        if(len(personnages) == 0 and len(objets) == 0):
+        if (len(personnages) == 0 and len(objets) == 0):
             print(random.choice([
                 "Je vois une salle poussièreuse, sans rien de plus que quelques cailloux.",
                 "Des toiles d'araignées un peu partout.",
@@ -112,28 +114,28 @@ while True:
             for objet in case.getObjets():
                 objet.ramasser(joueur)
                 print(" - " + objet.description())
-            case.getObjets().clear() # On est obliger de tout supprimer après avoir ramassé, car on ne peut pas modifier la liste sur laquelle on itere...
+            case.getObjets().clear()  # On est obliger de tout supprimer après avoir ramassé, car on ne peut pas modifier la liste sur laquelle on itere...
         input()
 
     elif action == "sac":
         sac = joueur.getSac()
-        if(len(sac)) == 0:
+        if (len(sac)) == 0:
             print("Le sac est vide")
             input()
         else:
             print("Le sac contient: ")
             index = 0
             for obj in sac:
-                print(str(index+1)+" - "+obj.description())
+                print(str(index + 1) + " - " + obj.description())
                 index += 1
             choice = input("Pour utiliser un objet, taper son numéro, ou entrée pour ne rien faire. ")
             try:
                 num = int(choice)
-                obj = sac[num-1]
+                obj = sac[num - 1]
                 sac.remove(obj)
                 obj.utiliser(joueur)
             except:
-                pass # En cas d'erreur, c'est que l'entrée est invalide, on ne fait rien
+                pass  # En cas d'erreur, c'est que l'entrée est invalide, on ne fait rien
 
     elif action == "parler":
         personnages = joueur.getCaseCourante().getPersonnages()
