@@ -4,6 +4,8 @@ from joueur import Joueur
 from objets.potion import Potion
 from personnes.perroquet import Perroquet
 
+from action import ActionManager
+
 import random
 
 
@@ -52,6 +54,13 @@ for i in range(70):
 for i in range(50):
     l.deposerPersonneAleatoirement(Perroquet(random.choice(['vert','bleu','rouge','orange','jaune','rose','violet'])))
 
+
+
+
+# Gestion des actions
+actionManager = ActionManager.getInstance()
+actionManager.loadActionPlugins()
+
 while True:
     cls()  # Effacer la console
     joueur.printEnergie()
@@ -59,7 +68,23 @@ while True:
     l.afficher()
     print()
 
-    # TODO: oulàlà que c'est mocche, utiliser un design pattern !
+
+    # Afficher commandes dispo
+    print("Que voulez vous faire ?")
+    actionManager.afficherCommandesDispo()
+
+    # Récupérer entrée utilisateur
+    choix = input("Votre choix ? #> ")
+
+   # Exécuter la commande
+    actionManager.executerEntreeUtilisateur(choix)
+
+
+
+
+
+
+
     action = input("Que dois-je faire ? ")
     if action == "n":
         try:
