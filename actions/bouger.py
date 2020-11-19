@@ -1,9 +1,9 @@
 from action import Action, ActionManager
 from  joueur import Joueur
 
-class Moove(Action):
+class Bouger(Action):
     
-    joueur = Joueur() #Demander aux autres comment appelr joueur 
+    joueur = Joueur.getInstance() 
 
     def __init__(self, letter):
         self.action = letter
@@ -11,25 +11,35 @@ class Moove(Action):
     def execute(self):
         if self.action == "n":
             try:
-                joueur.avancerNord()
+                Bouger.joueur.avancerNord()
             except:
                 print("Ouch, ce mur fait mal...")
                 input()
         elif self.action == "s":
             try:
-                joueur.avancerSud()
+                Bouger.joueur.avancerSud()
             except:
                 print("Ouch, ce mur fait mal...")
                 input()
         elif self.action == "e":
             try:
-                joueur.avancerEst()
+                Bouger.joueur.avancerEst()
             except:
                 print("Ouch, ce mur fait mal...")
                 input()
         elif self.action == "o":
             try:
-                joueur.avancerOuest()
+                Bouger.joueur.avancerOuest()
             except:
                 print("Ouch, ce mur fait mal...")
-                input()
+
+    def info(self):
+        print("Permet à votre personne de se déplacer")
+
+    def help(self):
+        print("""
+Permet à votre personne de se déplacer :
+Nord = n, 
+Sud = s,
+Ouest = o,
+Est = e """)
