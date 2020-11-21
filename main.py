@@ -67,33 +67,11 @@ while True:
     print()
     l.afficher()
     print()
-
-
     # Afficher commandes dispo
     print("Que voulez vous faire ?")
     actionManager.afficherCommandesDispo()
     # Récupérer entrée utilisateur
     choix = input("Que dois-je faire ? ")
-
    # Exécuter la commande
     actionManager.executerEntreeUtilisateur(choix)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    else:
-        print("Moi pas comprendre...")
-        print("Mon vocabulaire est limité  à n, s, e, o, regarder, ramasser, sac et parler.")
-        input()
-
     joueur.perdreEnergie()
