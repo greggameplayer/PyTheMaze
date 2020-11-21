@@ -14,15 +14,14 @@ class Action:
         pass
 
 class ActionManager:
-    ""
 
     __instance = None
 
     @staticmethod
     def getInstance():
-        if __class__.__instance == None:
-            __class__.__instance = __class__()
-        return __class__.__instance
+        if ActionManager.__instance == None:
+            ActionManager.__instance = ActionManager()
+        return ActionManager.__instance
 
     def __init__(self):
         self.actions = {}
