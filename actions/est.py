@@ -7,3 +7,6 @@ class Est(Action):
 
     def execute(self):
         Est.joueur.avancerEst()
+
+    def description(self):
+        return "Permet de se déplacer vers l'Est"

@@ -6,6 +6,10 @@ class NordCommand(ActionManager):
 
     def execute(self):
         return Nord().execute()
+    
+    def description(self):
+        return Nord().description()
+
 
 
 ActionManager.getInstance().registerCommand("n", NordCommand())

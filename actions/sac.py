@@ -24,3 +24,6 @@ class Sac(Action):
                 obj.utiliser(Sac.joueur)
             except:
                 pass # En cas d'erreur, c'est que l'entrée est invalide, on ne fait rien
+
+    def description(self):
+        return "Permet de se regarfer l'inventaire de son sac"

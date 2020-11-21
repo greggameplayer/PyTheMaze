@@ -7,6 +7,8 @@ class Action:
     def execute(self):
         """Abstraite"""
 
+    def description(self):
+        """Abstraite"""
 
 class ActionManager:
     __instance = None
@@ -34,10 +36,15 @@ class ActionManager:
         try:
             return self.actions[cmd].execute()
         except:
-            self.actions["fail"].execute()
-            self.afficherCommandesDispo()
-            input()
+            print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
+            self.descriptionCommande()
+
+    def descriptionCommande(self):
+        for key, val in self.actions.items():
+            print('-' + key +' : '+ val.description())
+        input()
 
     def afficherCommandesDispo(self):
-        for key, val in self.actions.items():
-            print(key)
+        print("Commandes disponibles : ")
+        for commande in self.actions.items():
+            print(commande[0], end = ", ")

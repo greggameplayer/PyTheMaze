@@ -7,3 +7,6 @@ class Nord(Action):
 
     def execute(self):
         Nord.joueur.avancerNord()
+
+    def description(self):
+        return "Permet d'aller au nord"

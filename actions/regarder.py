@@ -23,3 +23,6 @@ class Regarder(Action):
             for personnage in personnages:
                 print(" - " + personnage.description())
         input()
+
+    def description(self):
+        return "Permet de regarder autour de soi"

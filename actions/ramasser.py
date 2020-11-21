@@ -17,3 +17,6 @@ class Ramasser(Action):
                 print(" - " + objet.description())
             case.getObjets().clear() # On est obliger de tout supprimer après avoir ramassé, car on ne peut pas modifier la liste sur laquelle on itere...
         input()
+
+    def description(self):
+        return "Permet de ramasser un objet"

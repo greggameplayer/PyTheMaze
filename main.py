@@ -72,10 +72,12 @@ while True:
     print()
     l.afficher()
     print()
+
     # Afficher commandes dispo
     print("Que voulez vous faire ?")
+    actionManager.afficherCommandesDispo()
     # Récupérer entrée utilisateur
-    choix = input("Que dois-je faire ? ")
+    choix = input("\nQue dois-je faire ? ")
    # Exécuter la commande
     actionManager.executer(choix)
     joueur.perdreEnergie()

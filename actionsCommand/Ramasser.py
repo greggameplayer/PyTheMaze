@@ -6,6 +6,7 @@ class RamasserCommand(ActionManager):
 
     def execute(self):
         return Ramasser().execute()
-
+    def description(self):
+        return Ramasser().description()
 
 ActionManager.getInstance().registerCommand("ramasser", RamasserCommand())

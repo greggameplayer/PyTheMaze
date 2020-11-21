@@ -6,6 +6,7 @@ class SacCommand(ActionManager):
 
     def execute(self):
         return Sac().execute()
-
+    def description(self):
+        return Sac().description()
 
 ActionManager.getInstance().registerCommand("sac", SacCommand())

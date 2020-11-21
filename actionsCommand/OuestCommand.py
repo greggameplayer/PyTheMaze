@@ -7,5 +7,6 @@ class OuestCommand(ActionManager):
     def execute(self):
         return Ouest().execute()
 
-
+    def description(self):
+        return Ouest().description()
 ActionManager.getInstance().registerCommand("o", OuestCommand())

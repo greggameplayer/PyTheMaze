@@ -7,3 +7,6 @@ class Sud(Action):
 
     def execute(self):
         Sud.joueur.avancerSud()
+
+    def description(self):
+        return "Permet de se déplacer vers le sud"

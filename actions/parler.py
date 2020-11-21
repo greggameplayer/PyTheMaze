@@ -13,3 +13,6 @@ class Parler(Action):
             for personnage in personnages:
                 personnage.parler(Parler.joueur)
         input()
+    
+    def description(self):
+        return "Permet de parler à un pnj"
