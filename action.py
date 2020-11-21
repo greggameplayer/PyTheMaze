@@ -26,10 +26,18 @@ class ActionManager:
     def loadActionPlugins(self):
         """ Charge dynamiquement tous les modules présents dans le dossier actions"""
         main_dir = os.path.dirname(__file__)
-        for file in os.listdir(main_dir + "/actionsFactory"):
+        for file in os.listdir(main_dir + "/actionsCommand"):
             if file.endswith(".py"):
-                import_module("actionsFactory." + file[:-3])
+                import_module("actionsCommand." + file[:-3])
 
     def executer(self, cmd):
-        print(self.actions)
-        return self.actions[cmd].execute()
+        try:
+            return self.actions[cmd].execute()
+        except:
+            self.actions["fail"].execute()
+            self.afficherCommandesDispo()
+            input()
+
+    def afficherCommandesDispo(self):
+        for key, val in self.actions.items():
+            print(key)

@@ -6,4 +6,10 @@ class Parler(Action):
     joueur = Joueur.getInstance("X", 100)
 
     def execute(self):
-        print("Allo ? allo allo allo allo allo répète l'écho")
+        personnages = Parler.joueur.getCaseCourante().getPersonnages()
+        if len(personnages) == 0:
+            print("Allo ? allo allo allo allo allo répète l'écho")
+        else:
+            for personnage in personnages:
+                personnage.parler(Parler.joueur)
+        input()
