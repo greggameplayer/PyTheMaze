@@ -2,7 +2,7 @@ from action import Action, ActionManager
 from  joueur import Joueur
 
 class Sac(Action):
-    joueur = Joueur.getInstance()
+    joueur = Joueur.getInstance("X", 100)
 
     def _init_(self):
         self.sac = Sac.joueur.getSac()

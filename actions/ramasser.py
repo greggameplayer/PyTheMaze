@@ -3,7 +3,7 @@ from  joueur import Joueur
 
 
 class Ramasser(Action):
-    joueur = Joueur.getInstance()
+    joueur = Joueur.getInstance("X", 100)
 
     def _init_(self):
         self.case = Ramasser.joueur.getCaseCourante()

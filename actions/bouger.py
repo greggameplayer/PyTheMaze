@@ -1,14 +1,15 @@
 from action import Action, ActionManager
-from  joueur import Joueur
+from joueur import Joueur
+
 
 class Bouger(Action):
-    
-    joueur = Joueur.getInstance() 
+    joueur = Joueur.getInstance("X", 100)
 
     def __init__(self, letter):
         self.action = letter
 
-    def execute(self):
+    def execute(self, cmd):
+        print(cmd)
         if self.action == "n":
             try:
                 Bouger.joueur.avancerNord()

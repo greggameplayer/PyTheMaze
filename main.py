@@ -74,9 +74,8 @@ while True:
     print()
     # Afficher commandes dispo
     print("Que voulez vous faire ?")
-    actionManager.afficherCommandesDispo()
     # Récupérer entrée utilisateur
     choix = input("Que dois-je faire ? ")
    # Exécuter la commande
-    actionManager.executerEntreeUtilisateur(choix)
+    actionManager.executer(choix)
     joueur.perdreEnergie()
