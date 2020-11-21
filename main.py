@@ -3,15 +3,18 @@ from joueur import Joueur
 
 from objets.potion import Potion
 from personnes.perroquet import Perroquet
+from objetFactory import ObjetFactoryPrincipale
 
 from action import ActionManager
 
 import random
 
-
 import os
+
+
 def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 # now, to clear the screen
 
@@ -36,23 +39,25 @@ print("""
 """)
 input("   Appuyer sur 'Entrée' pour entrer dans le labyrinthe")
 
-
 cls()
 
 # Création des objets
 # TODO: récupérer les attributs via un menu de configuration
-l = Labyrinthe(20,10)
-joueur = Joueur("X",100)
+joueur = Joueur.getInstance("X", 100)
+l = Labyrinthe.getInstance()
 l.deposerJoueurAleatoirement(joueur)
+
+factoryObjet = ObjetFactoryPrincipale.getInstance()
+factoryObjet.loadFactoryPlugins()
 
 # Generation de 70 potions aléatoirement
 for i in range(70):
-    potion = Potion(random.randint(5,10))
-    l.deposerObjetAleatoirement(potion)
+    l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion"))
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(Perroquet(random.choice(['vert','bleu','rouge','orange','jaune','rose','violet'])))
+    l.deposerPersonneAleatoirement(
+        Perroquet(random.choice(['vert', 'bleu', 'rouge', 'orange', 'jaune', 'rose', 'violet'])))
 
 
 
