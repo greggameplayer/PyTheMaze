@@ -8,4 +8,4 @@ class potionFactory(ObjetFactory):
         expnb = random.randint(5, 10)
         return Potion(expnb)
 
-ObjetFactoryPrincipale.getInstance().registerFactory("potion", ObjetFactory())
+ObjetFactoryPrincipale.getInstance().registerFactory("potion", potionFactory())
