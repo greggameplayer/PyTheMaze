@@ -49,6 +49,12 @@ cls()
 joueur = Joueur.getInstance("X", 100)
 l = Labyrinthe.getInstance()
 l.deposerJoueurAleatoirement(joueur)
+factoryObjet = ObjetFactoryPrincipale.getInstance()
+factoryObjet.loadFactoryPlugins()
+factoryPersonne = PersonnesFactoryPrincipale.getInstance()
+factoryPersonne.loadFactoryPlugins()
+actionManager = ActionManager.getInstance()
+actionManager.loadActionPlugins()
 
 # Generation de 70 potions aléatoirement
 for i in range(70):
