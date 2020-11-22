@@ -1,13 +1,20 @@
 import random
 from labyrinthe.case import Case
 
-
 class Labyrinthe:
     """ La classe Labyrinthe représente un ensemble de cases ajencées entre elles pour former un labyrinthe.
     L'algorithme utilisé pour générer un Labyrinthe aléatoirement est celui de fusion aléatoire de chemin présentés
     sur Wikipedia : https://fr.wikipedia.org/wiki/Mod%C3%A9lisation_math%C3%A9matique_de_labyrinthe.
     Utiliser cette classe pour générer le labyrinthe et le personnaliser en y ajoutant des objets, personnages, et un joueur.
     """
+
+    __instance = None
+
+    @staticmethod
+    def getInstance():
+        if Labyrinthe.__instance is None:
+            Labyrinthe.__instance = Labyrinthe(20, 10)
+        return Labyrinthe.__instance
 
     @staticmethod
     def genererLabyrinthe():
@@ -22,6 +29,7 @@ class Labyrinthe:
         :param tailleX: taille horizontale du labyrinthe, en nombre de cases
         :param tailleY: taille verticale du labyrinthe, en nombre de cases.
         """
+
         # Stockage de la taille du labyrinthe
         self.tailleX = tailleX
         self.tailleY = tailleY
