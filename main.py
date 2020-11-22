@@ -72,6 +72,9 @@ while True:
         try:
             joueur.avancerNord()
         except:
+
+
+
             print("Ouch, ce mur fait mal...")
             input()
     elif action == "s":
