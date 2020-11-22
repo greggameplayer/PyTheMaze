@@ -6,15 +6,17 @@ from personnes.perroquet import Perroquet
 from objetFactory import ObjetFactoryPrincipale
 
 from action import ActionManager
+from personnesFactory import PersonnesFactoryPrincipale
+
 
 import random
+
 
 import os
 
 
 def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
+    os.system('cls' if os.name=='nt' else 'clear')
 
 # now, to clear the screen
 
@@ -39,6 +41,7 @@ print("""
 """)
 input("   Appuyer sur 'Entrée' pour entrer dans le labyrinthe")
 
+
 cls()
 
 # Création des objets
@@ -47,24 +50,14 @@ joueur = Joueur.getInstance("X", 100)
 l = Labyrinthe.getInstance()
 l.deposerJoueurAleatoirement(joueur)
 
-factoryObjet = ObjetFactoryPrincipale.getInstance()
-factoryObjet.loadFactoryPlugins()
-
 # Generation de 70 potions aléatoirement
 for i in range(70):
     l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion"))
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(
-        Perroquet(random.choice(['vert', 'bleu', 'rouge', 'orange', 'jaune', 'rose', 'violet'])))
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
 
-
-
-
-# Gestion des actions
-actionManager = ActionManager.getInstance()
-actionManager.loadActionPlugins()
 
 while True:
     cls()  # Effacer la console
@@ -78,6 +71,6 @@ while True:
     actionManager.afficherCommandesDispo()
     # Récupérer entrée utilisateur
     choix = input("\nQue dois-je faire ? ")
-   # Exécuter la commande
+    # Exécuter la commande
     actionManager.executer(choix)
     joueur.perdreEnergie()
