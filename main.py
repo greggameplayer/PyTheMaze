@@ -65,6 +65,7 @@ for i in range(30):
 # Ajouter des perroquets un peu partout
 for i in range(50):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"))
 
 
 while True:
