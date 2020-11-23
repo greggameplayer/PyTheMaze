@@ -18,6 +18,8 @@ class Joueur:
         self.__energie = 0
         self._sac = [] # On commence avec un sac vide
         self.setEnergie(energieInitiale)
+        self.nbCle = 0
+        self.voler = False
 
 
     def getEnergie(self):
@@ -64,26 +66,59 @@ class Joueur:
     def getSymbole(self):
         return self.__symbole
 
+    def gagnerCle(self):
+        self.nbCle+=1
 
+    def perdreCle(self):
+        self.nbCle-=1
+
+    def getCle(self):
+        return self.nbCle
+
+    def boireRedbull(self):
+        print("OUIIIIII")
+        self.voler = True
+
+    def plusDeRedbull(self):
+        print("NONNNN")
+        self.voler = False
+
+    def getVoler(self):
+        return self.voler
 
     def avancerNord(self):
         caseCourante = self.__caseCourante
-        if caseCourante.estOuvertNord(): self.setCaseCourante(caseCourante.getCaseNord())
+        if caseCourante.estOuvertNord():
+            self.setCaseCourante(caseCourante.getCaseNord())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseNord())
+
         else: raise ValueError("Pas de passage par là...")
 
     def avancerSud(self):
         caseCourante = self.__caseCourante
-        if caseCourante.estOuvertSud(): self.setCaseCourante(caseCourante.getCaseSud())
+        if caseCourante.estOuvertSud():
+            self.setCaseCourante(caseCourante.getCaseSud())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseSud())
         else: raise ValueError("Pas de passage par là...")
 
     def avancerEst(self):
         caseCourante = self.__caseCourante
-        if caseCourante.estOuvertEst(): self.setCaseCourante(caseCourante.getCaseEst())
-        else: raise ValueError("Pas de passage par là...")
+        if caseCourante.estOuvertEst():
+            self.setCaseCourante(caseCourante.getCaseEst())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseEst())
+        else:
+            raise ValueError("Pas de passage par là...")
 
     def avancerOuest(self):
         caseCourante = self.__caseCourante
-        if caseCourante.estOuvertOuest(): self.setCaseCourante(caseCourante.getCaseOuest())
+        if caseCourante.estOuvertOuest() :
+            self.setCaseCourante(caseCourante.getCaseOuest())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseOuest())
+
         else: raise ValueError("Pas de passage par là...")
 
     def printEnergie(self):

@@ -1,6 +1,6 @@
 from objet import ObjetRamassable
 
-class Potion(ObjetRamassable):
+class Redbull(ObjetRamassable):
     """ Représente une potion qui redonne de l'énergie au joueur lorsqu'il la boit. """
 
     def __init__(self, energie, joueur):
@@ -11,7 +11,13 @@ class Potion(ObjetRamassable):
         self.joueur = joueur
 
     def utiliser(self,joueur):
-        self.joueur.gagnerEnergie(self._energie)
+        print("ramasserrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+        joueur.gagnerEnergie(self._energie)
+        joueur.boireRedbull()
+        print("JE VOLE !")
 
     def description(self):
-        return "Potion de "+str(self._energie)
+        return "REDBULL donne des aileeees"
+
+
+
