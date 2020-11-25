@@ -1,14 +1,17 @@
 import os
 from importlib import import_module
+from exceptions import AbstractMethodCallException
 
 
 class Action:
 
     def execute(self):
         """Abstraite"""
+        raise AbstractMethodCallException()
 
     def description(self):
         """Abstraite"""
+        raise AbstractMethodCallException()
 
 class ActionManager:
     __instance = None
