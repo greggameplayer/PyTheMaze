@@ -3,7 +3,7 @@ from joueur import Joueur
 
 
 class Parler(Action):
-    joueur = Joueur.getInstance("X", 100)
+    joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
         personnages = Parler.joueur.getCaseCourante().getPersonnages()

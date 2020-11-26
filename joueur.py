@@ -5,19 +5,23 @@ class Joueur:
     __instance = None
 
     @staticmethod
-    def getInstance(atb1, atb2):
+    def getInstance(symboleWindowsTerminal, symbole, atb2):
         if Joueur.__instance is None:
-            Joueur.__instance = Joueur(atb1, atb2)
+            Joueur.__instance = Joueur(symboleWindowsTerminal, symbole, atb2)
         return Joueur.__instance
 
-    def __init__(self, symbole, energieInitiale):
+    def __init__(self, symboleWindowsTerminal, symbole, energieInitiale):
         # La case sur laquelle se situe le joueur
         self.__caseCourante = Case()
         self.__symbole = symbole
+        self.__symboleWindowsTerminal = symboleWindowsTerminal
         self.__energieMax = 70  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
         self.__energie = 0
         self._sac = []  # On commence avec un sac vide
         self.setEnergie(energieInitiale)
+        self.nbCle = 0
+        self.voler = False
+        self.afficher = False
 
     def getEnergie(self):
         """ Renvoie le niveau d'énergie du joueur. """
@@ -59,13 +63,19 @@ class Joueur:
         if self.__caseCourante.estOuvertEst(): self.__caseCourante.getCaseEst().decouvrir()
         if self.__caseCourante.estOuvertOuest(): self.__caseCourante.getCaseOuest().decouvrir()
 
-    def getSymbole(self):
-        return self.__symbole
+    def getSymbole(self, isWindowsTerminal):
+        if isWindowsTerminal:
+            return self.__symboleWindowsTerminal
+        else:
+            return self.__symbole
 
     def avancerNord(self):
         caseCourante = self.__caseCourante
         if caseCourante.estOuvertNord():
             self.setCaseCourante(caseCourante.getCaseNord())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseNord())
+            self.plusDeRedbull()
         else:
             raise ValueError("Pas de passage par là...")
 
@@ -73,6 +83,9 @@ class Joueur:
         caseCourante = self.__caseCourante
         if caseCourante.estOuvertSud():
             self.setCaseCourante(caseCourante.getCaseSud())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseSud())
+            self.plusDeRedbull()
         else:
             raise ValueError("Pas de passage par là...")
 
@@ -80,6 +93,9 @@ class Joueur:
         caseCourante = self.__caseCourante
         if caseCourante.estOuvertEst():
             self.setCaseCourante(caseCourante.getCaseEst())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseEst())
+            self.plusDeRedbull()
         else:
             raise ValueError("Pas de passage par là...")
 
@@ -87,6 +103,9 @@ class Joueur:
         caseCourante = self.__caseCourante
         if caseCourante.estOuvertOuest():
             self.setCaseCourante(caseCourante.getCaseOuest())
+        elif self.getVoler():
+            self.setCaseCourante(caseCourante.getCaseOuest())
+            self.plusDeRedbull()
         else:
             raise ValueError("Pas de passage par là...")
 
@@ -100,3 +119,23 @@ class Joueur:
     def mettreObjetDansLeSac(self, objet):
         """ Met l'objet passé en paramètre dans le sac du joueur."""
         self._sac.append(objet)
+
+    def gagnerCle(self):
+        self.nbCle += 1
+
+    def perdreCle(self):
+        self.nbCle -= 1
+
+    def getCle(self):
+        return self.nbCle
+
+    def boireRedbull(self):
+        print("OUIIIIII")
+        self.voler = True
+
+    def plusDeRedbull(self):
+        print("NONNNN")
+        self.voler = False
+
+    def getVoler(self):
+        return self.voler

@@ -7,11 +7,11 @@ class Action:
 
     def execute(self):
         """Abstraite"""
-        raise AbstractMethodCallException(self.__class__.__name__, self.__name__)
+        raise AbstractMethodCallException(self.__class__.__name__, "execute")
 
     def description(self):
         """Abstraite"""
-        raise AbstractMethodCallException(self.__class__.__name__, self.__name__)
+        raise AbstractMethodCallException(self.__class__.__name__, "description")
 
 
 class ActionManager:
@@ -39,16 +39,19 @@ class ActionManager:
     def executer(self, cmd):
         try:
             return self.actions[cmd].execute()
-        except:
+        except KeyError:
             print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
             self.descriptionCommande()
+        except ValueError as e:
+            print("\n\n" + e.__str__())
+            input()
 
     def descriptionCommande(self):
         for key, val in self.actions.items():
-            print('-' + key +' : '+ val.description())
+            print('- ' + key + ' : ' + val.description())
         input()
 
     def afficherCommandesDispo(self):
         print("Commandes disponibles : ")
         for commande in self.actions.items():
-            print(commande[0], end = ", ")
+            print(commande[0], end=", ")

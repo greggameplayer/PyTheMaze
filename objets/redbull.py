@@ -9,6 +9,8 @@ class Redbull(ObjetRamassable):
         """
         self._energie = energie
         self.joueur = joueur
+        self._symboleWindowsTerminal = "🥫"
+        self._symbole = "R"
 
     def utiliser(self,joueur):
         joueur.gagnerEnergie(self._energie)
@@ -18,5 +20,9 @@ class Redbull(ObjetRamassable):
     def description(self):
         return "REDBULL donne des aileeees"
 
-
+    def getSymbole(self, isWindowsTerminal):
+        if isWindowsTerminal:
+            return self._symboleWindowsTerminal
+        else:
+            return self._symbole
 

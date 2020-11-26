@@ -8,6 +8,7 @@ class Potion(ObjetRamassable):
         - energie : la quantité d'energie récupérée lorsque l'on utilise la potion
         """
         self._energie = energie
+        self._symboleWindowsTerminal = "🧃"
         self._symbole = "."
 
     def utiliser(self, joueur):
@@ -16,5 +17,8 @@ class Potion(ObjetRamassable):
     def description(self):
         return "Potion de "+str(self._energie)+" énergie(s)."
 
-    def getSymbole(self):
-        return self._symbole
+    def getSymbole(self, isWindowsTerminal):
+        if isWindowsTerminal:
+            return self._symboleWindowsTerminal
+        else:
+            return self._symbole
