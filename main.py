@@ -1,8 +1,6 @@
 from labyrinthe.labyrinthe import Labyrinthe
 from joueur import Joueur
 
-from objets.potion import Potion
-from personnes.perroquet import Perroquet
 from objetFactory import ObjetFactoryPrincipale
 
 from action import ActionManager

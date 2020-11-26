@@ -10,6 +10,7 @@ class Perroquet(Personnage):
         - couleur : la couleur du perroquet (chaine de caractères)
         """
         self._couleur = couleur
+        self._symbole = "P"
 
     def description(self):
         """ Renvoie la description du perroquet."""
@@ -33,3 +34,6 @@ class Perroquet(Personnage):
             else:
                 repetition += lettre # Si ce n'est pas une voyelle, on ne la répète qu'une fois
         print(repetition)
+
+    def getSymbole(self):
+        return self._symbole

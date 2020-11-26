@@ -64,10 +64,10 @@ class Labyrinthe:
         Case inférieure."""
         for y in range(self.tailleY):
             for x in range(self.tailleX):
-                self.getCase(x,y).afficherLigne1()
+                self.getCase(x,y).afficher(1)
             print("+\n",end="")
             for x in range(self.tailleX):
-                self.getCase(x,y).afficherLigne2()
+                self.getCase(x,y).afficher(2)
             print("|\n", end="")
         for x in range(self.tailleX):
             print("+---",end="")
