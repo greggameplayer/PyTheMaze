@@ -7,11 +7,11 @@ class Action:
 
     def execute(self):
         """Abstraite"""
-        raise AbstractMethodCallException()
+        raise AbstractMethodCallException(self.__class__.__name__, self.__name__)
 
     def description(self):
         """Abstraite"""
-        raise AbstractMethodCallException()
+        raise AbstractMethodCallException(self.__class__.__name__, self.__name__)
 
 class ActionManager:
     __instance = None

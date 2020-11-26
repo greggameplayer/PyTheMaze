@@ -9,4 +9,4 @@ class OuestCommand(ActionManager):
 
     def description(self):
         return Ouest().description()
-ActionManager.getInstance().registerCommand("o", OuestCommand())
+ActionManager.getInstance().registerCommand("q", OuestCommand())

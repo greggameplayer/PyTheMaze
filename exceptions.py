@@ -10,4 +10,11 @@ class AbstractMethodCallException(Exception):
     On ne doit normalement jamais les appeler puisqu'elles sont par définition redéfinies dans les classes filles
     des classes abstraites ou interfaces.
     """
-    pass
+    def __init__(self, classe ,method, message="The called method is a abstract."):
+        self.classe = classe
+        self.method = method
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"{self.method} in {self.classe} -> {self.message}"

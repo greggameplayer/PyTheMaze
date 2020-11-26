@@ -8,6 +8,7 @@ from personnesFactory import PersonnesFactoryPrincipale
 
 
 import random
+import keyboard
 
 
 import os
@@ -62,9 +63,8 @@ for i in range(70):
 for i in range(50):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
 
-
-while True:
-    cls()  # Effacer la console
+while True:  # Effacer la console
+    cls()
     joueur.printEnergie()
     print()
     l.afficher()
@@ -72,9 +72,8 @@ while True:
 
     # Afficher commandes dispo
     print("Que voulez vous faire ?")
-    actionManager.afficherCommandesDispo()
-    # Récupérer entrée utilisateur
-    choix = input("\nQue dois-je faire ? ")
-    # Exécuter la commande
+    choix = input()
     actionManager.executer(choix)
+    actionManager.afficherCommandesDispo()
+    print()
     joueur.perdreEnergie()

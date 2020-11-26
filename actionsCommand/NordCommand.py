@@ -12,4 +12,4 @@ class NordCommand(ActionManager):
 
 
 
-ActionManager.getInstance().registerCommand("n", NordCommand())
+ActionManager.getInstance().registerCommand("z", NordCommand())

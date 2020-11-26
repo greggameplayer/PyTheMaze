@@ -1,5 +1,6 @@
 from action import ActionManager
 from actions.est import Est
+import keyboard
 
 
 class EstCommand(ActionManager):
@@ -10,4 +11,4 @@ class EstCommand(ActionManager):
     def description(self):
         return Est().description()
 
-ActionManager.getInstance().registerCommand("e", EstCommand())
+ActionManager.getInstance().registerCommand("d", EstCommand())

@@ -14,7 +14,7 @@ class Potion(ObjetRamassable):
         joueur.gagnerEnergie(self._energie)
 
     def description(self):
-        return "Potion de "+str(self._energie)
+        return "Potion de "+str(self._energie)+" énergie(s)."
 
     def getSymbole(self):
         return self._symbole
