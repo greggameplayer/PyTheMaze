@@ -1,6 +1,5 @@
 from action import ActionManager
 from actions.est import Est
-import keyboard
 
 
 class EstCommand(ActionManager):
