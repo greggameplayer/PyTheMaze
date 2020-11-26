@@ -46,7 +46,7 @@ class Case:
 
     def afficherLigne1(self):
         """ Affiche la première ligne (le haut) de la case. En fonction de la présence de mur en haut, on n'affiche pas la même chose. """
-        if self.__decouvert or (self.__caseNord != None and self.__caseNord.estDecouvert()):
+        if self.__decouvert or (self.__caseNord != None and self.__caseNord.estDecouvert() or self._joueur.afficher):
             if self.__ouvertNord: print("+   ", end="")
             else: print("+---", end="")
         else:
@@ -54,11 +54,11 @@ class Case:
 
     def afficherLigne2(self):
         """ Affiche la deuxième ligne de la case (le contenu). En fonction de ce qui est présent sur la case, on n'affiche pas la même chose. """
-        if self.__decouvert or (self.__caseOuest != None and self.__caseOuest.estDecouvert()):
+        if self.__decouvert or (self.__caseOuest != None and self.__caseOuest.estDecouvert() or self._joueur.afficher):
             print(" ", end="") if self.__ouvertOuest else print("|", end="")
         else:
             print("#",end="")
-        if self.estDecouvert():
+        if self.estDecouvert() or self._joueur.afficher:
             ## Afficher le contenu de la case ici:
             if self._joueur:
                 print(" "+self._joueur.getSymbole()+" ",end="") # Le joueur est présent
@@ -72,6 +72,7 @@ class Case:
                 print("   ", end="") # Il n'y a rien
         else:
             print("###", end="")
+
 
     # Getters pour récupérer les cases voisines
     def getCaseNord(self): return self.__caseNord

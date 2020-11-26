@@ -11,7 +11,6 @@ class Redbull(ObjetRamassable):
         self.joueur = joueur
 
     def utiliser(self,joueur):
-        print("ramasserrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
         joueur.gagnerEnergie(self._energie)
         joueur.boireRedbull()
         print("JE VOLE !")

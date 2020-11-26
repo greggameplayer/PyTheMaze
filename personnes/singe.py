@@ -18,6 +18,7 @@ class Singe(Personnage):
         #Vole une clé au joueur
         if joueur.getCle() !=0:
             print("Oh nonnn, le singe vient de te piquer une clef !")
+            print(joueur.getSac())
             joueur.perdreCle()
             print("Vous avez maintenant "+ str(joueur.nbCle) + " clef")
         else:

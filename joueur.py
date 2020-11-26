@@ -20,6 +20,7 @@ class Joueur:
         self.setEnergie(energieInitiale)
         self.nbCle = 0
         self.voler = False
+        self.afficher = False
 
 
     def getEnergie(self):
@@ -62,6 +63,7 @@ class Joueur:
         if self.__caseCourante.estOuvertSud(): self.__caseCourante.getCaseSud().decouvrir()
         if self.__caseCourante.estOuvertEst(): self.__caseCourante.getCaseEst().decouvrir()
         if self.__caseCourante.estOuvertOuest(): self.__caseCourante.getCaseOuest().decouvrir()
+
 
     def getSymbole(self):
         return self.__symbole

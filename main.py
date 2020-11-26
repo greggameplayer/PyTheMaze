@@ -57,14 +57,14 @@ actionManager = ActionManager.getInstance()
 actionManager.loadActionPlugins()
 
 # Generation de 70 potions aléatoirement
-for i in range(30):
-    l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion",joueur))
+for i in range(50):
+    #l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion",joueur))
     l.deposerObjetAleatoirement(factoryObjet.creerObjet("clef",joueur))
-    l.deposerObjetAleatoirement(factoryObjet.creerObjet("redbull",joueur))
+    #l.deposerObjetAleatoirement(factoryObjet.creerObjet("redbull",joueur))
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
+    #l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"))
 
 
@@ -73,7 +73,7 @@ while True:
     cls()  # Effacer la console
     joueur.printEnergie()
     print()
-    l.afficher()
+    l.afficher(joueur.afficher)
     print()
     print(joueur.getCle())
     # Afficher commandes dispo
@@ -81,6 +81,8 @@ while True:
     actionManager.afficherCommandesDispo()
     # Récupérer entrée utilisateur
     choix = input("\nQue dois-je faire ? ")
+    if choix == "test":
+        joueur.afficher =True
     # Exécuter la commande
     actionManager.executer(choix)
     joueur.perdreEnergie()
