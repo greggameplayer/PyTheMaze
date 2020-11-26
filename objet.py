@@ -1,4 +1,5 @@
 from exceptions import AbstractMethodCallException
+import inspect
 
 
 class Objet:
