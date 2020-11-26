@@ -35,3 +35,6 @@ class ObjetRamassable(Objet):
 
     def description(self):
         raise AbstractMethodCallException()  # Méthode abstraite
+
+    def getSymbole(self):
+        raise AbstractMethodCallException()  # Méthode abstraite
