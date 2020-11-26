@@ -12,7 +12,7 @@ class Objet:
         """
         raise AbstractMethodCallException()  # Méthode abstraite
 
-    def utiliser(self, joueur):
+    def utiliser(self,joueur):
         """ Cette méthode est appelée lorsque le joueur utilise un objet. """
         raise AbstractMethodCallException()  # Méthode abstraite
 
@@ -30,7 +30,7 @@ class ObjetRamassable(Objet):
         """ Met l'objet dans le sac du joueur. """
         joueur.mettreObjetDansLeSac(self)
 
-    def utiliser(self, joueur):
+    def utiliser(self,joueur):
         raise AbstractMethodCallException()  # Méthode abstraite
 
     def description(self):
