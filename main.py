@@ -7,10 +7,6 @@ from action import ActionManager
 from personnesFactory import PersonnesFactoryPrincipale
 
 
-import random
-import keyboard
-
-
 import os
 
 
