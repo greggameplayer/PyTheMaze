@@ -13,6 +13,7 @@ class Action:
         """Abstraite"""
         raise AbstractMethodCallException(self.__class__.__name__, self.__name__)
 
+
 class ActionManager:
     __instance = None
 
