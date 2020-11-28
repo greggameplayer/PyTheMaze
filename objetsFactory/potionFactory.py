@@ -4,7 +4,7 @@ import random
 
 class potionFactory(ObjetFactory):
 
-    def creerInstance(self, joueur=""):
+    def creerInstance(self):
         expnb = random.randint(5, 10)
         return Potion(expnb)
 

@@ -1,8 +1,11 @@
 from personnage import Personnage
 import random
+from joueur import Joueur
 
 class Singe(Personnage):
     """ Cette classe représente un singe qui vole une clé lorsqu'on arrive dans sa case, ensuite il s'enfuit """
+
+    joueur = Joueur.getInstance("👤", "X", 100)
 
     def __init__(self):
         """ Constructeur. Paramètres :
@@ -16,15 +19,16 @@ class Singe(Personnage):
         """ Renvoie la description du perroquet."""
         return "Un singe"
 
-    def rencontrer(self, joueur):
+    def rencontrer(self):
         #Vole une clé au joueur
-        if joueur.getCle() !=0:
+        if Singe.joueur.getCle() !=0:
             print("Oh nonnn, le singe vient de te piquer une clef !")
-            print(joueur.getSac())
-            joueur.perdreCle()
-            print("Vous avez maintenant "+ str(joueur.nbCle) + " clef")
+            print(Singe.joueur.getSac())
+            Singe.joueur.perdreCle()
+            print("Vous avez maintenant "+ str(Singe.joueur.nbCle) + " clef")
         else:
             print("Le singe vous dévisage")
+        input()
 
     def getSymbole(self, isWindowsTerminal):
         if isWindowsTerminal:

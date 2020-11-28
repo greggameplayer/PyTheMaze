@@ -4,7 +4,7 @@ from importlib import import_module
 
 class ObjetFactory:
 
-    def creerInstance(self, joueur):
+    def creerInstance(self):
         pass
 
 
@@ -29,5 +29,5 @@ class ObjetFactoryPrincipale:
             if file.endswith(".py"):
                 import_module("objetsFactory." + file[:-3])
 
-    def creerObjet(self, objet, joueur=""):
-        return self._factories[objet].creerInstance(joueur)
+    def creerObjet(self, objet):
+        return self._factories[objet].creerInstance()

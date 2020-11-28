@@ -39,9 +39,9 @@ class ActionManager:
     def executer(self, cmd):
         try:
             return self.actions[cmd].execute()
-        #except KeyError:
-        #    print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
-        #    self.descriptionCommande()
+        except KeyError:
+            print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
+            self.descriptionCommande()
         except ValueError as e:
             print("\n\n" + e.__str__())
             input()

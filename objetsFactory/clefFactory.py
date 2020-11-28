@@ -4,8 +4,8 @@ from objets.clef import Clef
 
 class clefFactory(ObjetFactory):
 
-    def creerInstance(self, joueur):
-        return Clef(joueur)
+    def creerInstance(self):
+        return Clef()
 
 
 ObjetFactoryPrincipale.getInstance().registerFactory("clef", clefFactory())

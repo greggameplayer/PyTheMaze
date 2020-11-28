@@ -37,28 +37,14 @@ class Sac(Action):
                         num = int(choice)
                         choix = list(showSac.values())[num-1]
                         obj = choix[0]
-                        sac.remove(obj)
-                        obj.utiliser(Sac.joueur)
+                        test = obj.utiliser()
+                        if(test):
+                            sac.remove(obj)
                         input()
                         break
-                    except:
+                    except Exception as e:
+                        print(e.__str__())
                         print("\nWhere is the item ? \nIt is not in the list !\n")
-
-
-                    
-
-
-            #for obj in sac:
-            #    print(str(index)+" - "+obj.description())
-            #    index += 1
-            #choice = input("Pour utiliser un objet, taper son numéro, ou entrée pour ne rien faire. ")
-            #try:
-            #    num = int(choice)
-            #    obj = sac[num-1]
-            #    sac.remove(obj)
-            #    obj.utiliser(Sac.joueur)
-            #except:
-            #    pass # En cas d'erreur, c'est que l'entrée est invalide, on ne fait rien
 
     def description(self):
         return "Permet de se regarfer l'inventaire de son sac"
