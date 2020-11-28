@@ -4,7 +4,7 @@ import random
 
 
 class Regarder(Action):
-    joueur = Joueur.getInstance("X", 100)
+    joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
         case = Regarder.joueur.getCaseCourante()

@@ -1,3 +1,5 @@
+import sys, os
+
 class Case:
     """ Une cse du labyrinthe.
     Une case possède au maxiumum 4 voisins, aux nord, sud, est et ouest. Seules les cases du bord n'ont pas de voisin, l'attribut correspondant est alors None.
@@ -34,6 +36,8 @@ class Case:
         # La liste des objets sur la case
         self._objets = []
 
+        self.is_windows_terminal = sys.platform == "win32" and os.environ.get("WT_SESSION")
+
     def ajouterJoueur(self, joueur):
         """ Stock la référence du joueur. A utiliser lorsque le joueur arrive sur la case. """
         self._joueur = joueur
@@ -61,15 +65,30 @@ class Case:
             if self.estDecouvert():
                 ## Afficher le contenu de la case ici:
                 if self._joueur:
-                    print(" " + self._joueur.getSymbole() + " ", end="")  # Le joueur est présent
+                    if self.is_windows_terminal is not None:
+                        print(" " + self._joueur.getSymbole(True) + "", end="")  # Le joueur est présent
+                    else:
+                        print(" " + self._joueur.getSymbole(False) + " ", end="") # Le joueur est présent
                 elif len(self._personnages) > 0 and len(self._objets) > 0:
-                    print(" % ", end="")  # Il y a à la fois personnage(s) et objet(s)
+                    if self.is_windows_terminal is not None:
+                        print(" 💠", end="")  # Il y a à la fois personnage(s) et objet(s)
+                    else:
+                        print(" % ", end="")  # Il y a à la fois personnage(s) et objet(s)
                 elif len(self._personnages) > 0:
-                    print(f" {self._personnages[0].getSymbole()} ", end="")  # Il n'y a que des personnages
+                    if self.is_windows_terminal is not None:
+                        print(f" {self._personnages[0].getSymbole(True)}", end="")  # Il n'y a que des personnages
+                    else:
+                        print(f" {self._personnages[0].getSymbole(False)} ", end="") # Il n'y a que des personnages
                 elif len(self._objets) > 0:
-                    print(f" {self._objets[0].getSymbole()} ", end="")  # Il n'y a que des objets
+                    if self.is_windows_terminal is not None:
+                        print(f" {self._objets[0].getSymbole(True)}", end="")  # Il n'y a que des objets
+                    else:
+                        print(f" {self._objets[0].getSymbole(False)} ", end="")  # Il n'y a que des objets
                 else:
-                    print("   ", end="")  # Il n'y a rien
+                    if self.is_windows_terminal is not None:
+                        print("　 ", end="")  # Il n'y a rien
+                    else:
+                        print("   ", end="") # Il n'y a rien
             else:
                 print("###", end="")
 

@@ -8,6 +8,8 @@ class Singe(Personnage):
         """ Constructeur. Paramètres :
         - couleur : la couleur du perroquet (chaine de caractères)
         """
+        self._symboleWindowsTerminal = "🐵"
+        self._symbole = "S"
 
 
     def description(self):
@@ -24,3 +26,8 @@ class Singe(Personnage):
         else:
             print("Le singe vous dévisage")
 
+    def getSymbole(self, isWindowsTerminal):
+        if isWindowsTerminal:
+            return self._symboleWindowsTerminal
+        else:
+            return self._symbole

@@ -3,7 +3,7 @@ from joueur import Joueur
 
 
 class Sac(Action):
-    joueur = Joueur.getInstance("X", 100)
+    joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
         sac = Sac.joueur.getSac()
@@ -17,13 +17,10 @@ class Sac(Action):
                 print(str(index+1)+" - "+obj.description())
                 index += 1
             choice = input("Pour utiliser un objet, taper son numéro, ou entrée pour ne rien faire. ")
-            try:
-                num = int(choice)
-                obj = sac[num-1]
-                sac.remove(obj)
-                obj.utiliser(Sac.joueur)
-            except:
-                pass # En cas d'erreur, c'est que l'entrée est invalide, on ne fait rien
+            num = int(choice)
+            obj = sac[num-1]
+            obj.utiliser(Sac.joueur)
+            sac.remove(obj)
 
     def description(self):
         return "Permet de se regarfer l'inventaire de son sac"

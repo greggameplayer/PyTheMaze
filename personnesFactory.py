@@ -1,10 +1,12 @@
 import os
 from importlib import import_module
 
+
 class PersonnesFactory:
 
     def creerInstance(self):
         pass
+
 
 class PersonnesFactoryPrincipale:
 
