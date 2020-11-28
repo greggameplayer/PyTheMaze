@@ -54,7 +54,7 @@ class Joueur:
         self.decouvreAlentour()
         # Rencontre tous les personnages potentiellements présents sur la case
         for personnage in case.getPersonnages():
-            personnage.rencontrer(self)
+            personnage.rencontrer()
 
     def decouvreAlentour(self):
         self.__caseCourante.decouvrir()
