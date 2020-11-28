@@ -81,3 +81,4 @@ while True:  # Effacer la console
     print()
     joueur.perdreEnergie()
     cls()
+
