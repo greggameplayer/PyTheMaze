@@ -79,14 +79,20 @@ class Labyrinthe:
         case.ajouterJoueur(joueur)
         joueur.setCaseCourante(case)
 
-    def deposerObjetAleatoirement(self, objet):
+    def deposerObjetAleatoirement(self, objet, joueur):
         """ Dépose l'objet passé en paramètre sur une case du labyrinthe choisie aléatoirement. """
         case = random.choice(self.cases)
+        while case == joueur.getCaseCourante():
+            case = random.choice(self.cases)
         case.ajouterObjet(objet)
 
-    def deposerPersonneAleatoirement(self, personne):
+    def deposerPersonneAleatoirement(self, personne, joueur):
         """ Dépose le personnage passé en paramètre sur une case du labyrinthe choisie aléatoirement. """
         case = random.choice(self.cases)
+        while case == joueur.getCaseCourante():
+            case = random.choice(self.cases)
+        while len(case.getPersonnages()) > 0:
+            case = random.choice(self.cases)
         case.ajouterPersonnage(personne)
 
 

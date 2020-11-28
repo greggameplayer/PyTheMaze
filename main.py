@@ -56,14 +56,14 @@ actionManager.loadActionPlugins()
 
 # Generation de 70 potions aléatoirement
 for i in range(70):
-    l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion"))
-    l.deposerObjetAleatoirement(factoryObjet.creerObjet("redbull", joueur))
-    l.deposerObjetAleatoirement(factoryObjet.creerObjet("clef", joueur))
+    l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion"), joueur)
+    l.deposerObjetAleatoirement(factoryObjet.creerObjet("redbull", joueur), joueur)
+    l.deposerObjetAleatoirement(factoryObjet.creerObjet("clef", joueur), joueur)
 
 # Ajouter des perroquets un peu partout
 for i in range(50):
-    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"))
-    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"))
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"), joueur)
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"), joueur)
 
 while True:  # Effacer la console
     cls()
