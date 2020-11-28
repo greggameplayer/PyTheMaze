@@ -139,3 +139,14 @@ class Joueur:
 
     def getVoler(self):
         return self.voler
+
+    def energieChecker(self):
+        if self.__energie == 0:
+            print("""
+            .-----..---.-..--------..-----. .-----..--.--..-----..----.
+            |  _  ||  _  ||        ||  -__| |  _  ||  |  ||  -__||   _|
+            |___  ||___._||__|__|__||_____| |_____| \___/ |_____||__|
+            |_____|
+            """)
+            return True
+

@@ -3,6 +3,7 @@ import inspect
 from joueur import Joueur
 
 
+
 class Objet:
     """ Cette interface représente un objet que l'on peut ramasser et que le joueur peut transporter dans son sac"""
 
