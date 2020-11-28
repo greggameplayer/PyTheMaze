@@ -10,10 +10,25 @@ class Ramasser(Action):
         if len(case.getObjets()) == 0:
             print("Mais... il n'y a rien à ramasser !")
         else:
-            print("J'ai ramassé :")
-            for objet in case.getObjets():
-                objet.ramasser()
-                print(" - " + objet.description())
+
+            showRamasser= {}
+            for obj in case.getObjets():
+                obj.ramasser()
+                test = True
+                for clef, valeur in showRamasser.items():
+                    if obj.__class__.__name__+ '('+ obj.description() +')' == clef:
+                        valeur.append(obj)
+                        test = False
+                if(test):
+                    showRamasser[obj.__class__.__name__ + '('+ obj.description() +')'] = [obj]
+
+            index = 1
+            print("J'ai ramassé : ")
+            for clef, valeur in showRamasser.items():
+                print( '    - ' + clef + " : " + str(len(valeur)))
+                index+=1
+
+
             case.getObjets().clear()  # On est obliger de tout supprimer après avoir ramassé, car on ne peut pas modifier la liste sur laquelle on itere...
         input()
 

@@ -9,6 +9,7 @@ from personnesFactory import PersonnesFactoryPrincipale
 import os, sys
 
 
+
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -64,6 +65,7 @@ for i in range(35):
 for i in range(20):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"), joueur)
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"), joueur)
+
 
 while True:  # Effacer la console
     cls()
