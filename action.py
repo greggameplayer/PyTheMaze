@@ -59,10 +59,9 @@ class ActionManager:
 
 
     def jouer(self):
-        j = Joueur.getInstance("X", 100)
+        j = Joueur.getInstance("👤", "X", 100)
         l = Labyrinthe.getInstance()
         j.printEnergie()
-        print()
         l.afficher()
         print()
         self.afficherCommandesDispo()
@@ -77,6 +76,6 @@ class ActionManager:
                 print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
                 self.descriptionCommande()
             except ValueError as e:
-                print("\n\n" + e.__str__())
-                input()
+                print("\n" + e.__str__())
+                self.afficherCommandesDispo()
 
