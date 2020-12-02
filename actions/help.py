@@ -9,4 +9,4 @@ class Help(Action):
         Help.manager.descriptionCommande()
 
     def description(self):
-        return "Pemert au joueur d'avoir la description des commandes disponibles"
+        return "Permet au joueur d'avoir la description des commandes disponibles"

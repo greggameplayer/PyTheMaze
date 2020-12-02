@@ -72,12 +72,8 @@ while True:  # Effacer la console
     gameOver = joueur.energieChecker()
     if gameOver:
         break
-    joueur.printEnergie()
-    print()
-    l.afficher()
-    print()
-
     # Afficher commandes dispo
+<<<<<<< Updated upstream
     print("Que voulez vous faire ?")
     actionManager.afficherCommandesDispo()
     choix = input()
@@ -86,3 +82,6 @@ while True:  # Effacer la console
     joueur.perdreEnergie()
     cls()
 
+=======
+    actionManager.jouer()
+>>>>>>> Stashed changes
