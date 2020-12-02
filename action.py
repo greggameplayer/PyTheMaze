@@ -39,34 +39,15 @@ class ActionManager:
                 import_module("actionsCommand." + file[:-3])
 
     def executer(self, cmd):
-<<<<<<< Updated upstream
-        try:
-            return self.actions[cmd].execute()
-        except KeyError:
-            print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
-            self.descriptionCommande()
-        except ValueError as e:
-            print("\n\n" + e.__str__())
-            input()
-
-    def descriptionCommande(self):
-        for key, val in self.actions.items():
-            print('- ' + key + ' : ' + val.description())
-        input()
-=======
         return self.actions[cmd].execute()
 
     def descriptionCommande(self):
         for key, val in self.actions.items():
             print('-' + key +' : '+ val.description())
->>>>>>> Stashed changes
 
     def afficherCommandesDispo(self):
         arrayCommandes = []
         for commande in self.actions.items():
-<<<<<<< Updated upstream
-            print(commande[0], end=", ")
-=======
            arrayCommandes.append(commande[0])
         commandes ="Commandes disponibles : "
         for i in range(0, len(arrayCommandes)):
@@ -92,8 +73,10 @@ class ActionManager:
                 self.executer(choix)
                 j.perdreEnergie()
                 break
-            except:
+            except KeyError:
                 print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
                 self.descriptionCommande()
+            except ValueError as e:
+                print("\n\n" + e.__str__())
+                input()
 
->>>>>>> Stashed changes

@@ -14,14 +14,9 @@ class Joueur:
         # La case sur laquelle se situe le joueur
         self.__caseCourante = Case()
         self.__symbole = symbole
-<<<<<<< Updated upstream
         self.__symboleWindowsTerminal = symboleWindowsTerminal
         self.__energieMax = 70  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
-        self.__energie = 0
-=======
-        self.__energieMax = 70  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
         self.__energie = 70
->>>>>>> Stashed changes
         self._sac = []  # On commence avec un sac vide
         self.setEnergie(energieInitiale)
         self.nbCle = 0
