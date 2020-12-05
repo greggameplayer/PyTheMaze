@@ -19,10 +19,6 @@ class Objet:
         """ Cette méthode est appelée lorsque le joueur utilise un objet. """
         raise AbstractMethodCallException(self.__class__.__name__, "utiliser")  # Méthode abstraite
 
-    def description(self):
-        """ Renvoie une description de l'objet, pour pouvoir l'afficher. """
-        raise AbstractMethodCallException(self.__class__.__name__, "description")  # Méthode abstraite
-
 
 class ObjetRamassable(Objet):
     """ Cette classe abstraite représente tout objet que l'on peut ramasser. La méthode ramasser implémente le code

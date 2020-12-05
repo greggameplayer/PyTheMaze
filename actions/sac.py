@@ -42,8 +42,7 @@ class Sac(Action):
                             sac.remove(obj)
                         input()
                         break
-                    except Exception as e:
-                        print(e.__str__())
+                    except Exception:
                         print("\nWhere is the item ? \nIt is not in the list !\n")
 
     def description(self):

@@ -5,6 +5,6 @@ from personnes.sphinx import Sphinx
 class sphinxFactory(PersonnesFactory):
 
     def creerInstance(self):
-        return Sphinx()
+        return Sphinx.getInstance()
 
 PersonnesFactoryPrincipale.getInstance().registerFactory("sphinx", sphinxFactory())

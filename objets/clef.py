@@ -7,7 +7,6 @@ class Clef(ObjetRamassable):
 
     joueur = Joueur.getInstance("👤", "X", 100)
 
-
     def __init__(self):
         self._symboleWindowsTerminal = "🔑"
         self._symbole = "C"
@@ -16,9 +15,12 @@ class Clef(ObjetRamassable):
         return "Il te manque " + str(10 - self.joueur.getCle()) + " pour pouvoir sortir !"
 
     def ramasser(self):
-        Clef.joueur.mettreObjetDansLeSac(self)
-        # Ajoute la clé au total du joueur
-        Clef.joueur.gagnerCle()
+        if Clef.joueur.getCle() < 10:
+            Clef.joueur.mettreObjetDansLeSac(self)
+            Clef.joueur.gagnerCle()
+        else:
+            print("Vous avez déjà les 10 clefs requises... dirigez-vous vers le sphinx !")
+            input()
 
     def getSymbole(self, isWindowsTerminal):
         if isWindowsTerminal:
@@ -27,5 +29,8 @@ class Clef(ObjetRamassable):
             return self._symbole
 
     def utiliser(self):
-        print("Il est trop tôt pour utiliser la clé jeune Padawan!")
+        if Clef.joueur.getCle() == 10:
+            print("Va voir le sphinx jeune Padawan")
+        else:
+            print("Il est trop tôt pour utiliser la clé jeune Padawan!")
         return False

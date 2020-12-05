@@ -1,4 +1,6 @@
 from labyrinthe.labyrinthe import Case
+from labyrinthe.labyrinthe import Labyrinthe
+from objetFactory import ObjetFactoryPrincipale
 
 
 class Joueur:
@@ -22,7 +24,6 @@ class Joueur:
         self.nbCle = 0
         self.voler = False
         self.afficher = False
-        self.carte = True
 
     def getEnergie(self):
         """ Renvoie le niveau d'énergie du joueur. """
@@ -63,6 +64,11 @@ class Joueur:
         if self.__caseCourante.estOuvertSud(): self.__caseCourante.getCaseSud().decouvrir()
         if self.__caseCourante.estOuvertEst(): self.__caseCourante.getCaseEst().decouvrir()
         if self.__caseCourante.estOuvertOuest(): self.__caseCourante.getCaseOuest().decouvrir()
+
+    def reinitionalisationDecouverte(self):
+        for case in Labyrinthe.getInstance().cases:
+            case.cacher()
+        self.__caseCourante.decouvrir()
 
     def getSymbole(self, isWindowsTerminal):
         if isWindowsTerminal:
@@ -110,9 +116,12 @@ class Joueur:
         else:
             raise ValueError("Pas de passage par là...")
 
-    def printEnergie(self):
+    def printEnergie(self, isWindowsTerminal):
         """ Petite fonction utilitaire pour afficher la jauge d'énergie sur la console. """
-        print(" ENERGIE " + ">" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
+        if isWindowsTerminal:
+            print(" ENERGIE " + "◼" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
+        else:
+            print(" ENERGIE " + ">" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
 
     def getSac(self):
         return self._sac
@@ -126,6 +135,11 @@ class Joueur:
 
     def perdreCle(self):
         self.nbCle -= 1
+        for obj in self.getSac():
+            if obj.__class__.__name__ == "Clef":
+                self.getSac().remove(obj)
+                break
+        Labyrinthe.getInstance().deposerObjetAleatoirement(ObjetFactoryPrincipale.getInstance().creerObjet("clef"), self.getInstance("", "", 100))
 
     def getCle(self):
         return self.nbCle

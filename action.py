@@ -1,4 +1,5 @@
 import os
+import sys
 from importlib import import_module
 from exceptions import AbstractMethodCallException
 from joueur import Joueur
@@ -61,7 +62,7 @@ class ActionManager:
     def jouer(self):
         j = Joueur.getInstance("👤", "X", 100)
         l = Labyrinthe.getInstance()
-        j.printEnergie()
+        j.printEnergie(sys.platform == "win32" and os.environ.get("WT_SESSION"))
         l.afficher()
         print()
         self.afficherCommandesDispo()

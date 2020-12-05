@@ -23,12 +23,14 @@ class Singe(Personnage):
         #Vole une clé au joueur
         if Singe.joueur.getCle() !=0:
             print("Oh nonnn, le singe vient de te piquer une clef !")
-            print(Singe.joueur.getSac())
             Singe.joueur.perdreCle()
             print("Vous avez maintenant "+ str(Singe.joueur.nbCle) + " clef")
         else:
             print("Le singe vous dévisage")
         input()
+
+    def parler(self, joueur):
+        print("wouuuuuaaaaaInInIn WWWoouaaaahhInInInIn !!!")
 
     def getSymbole(self, isWindowsTerminal):
         if isWindowsTerminal:

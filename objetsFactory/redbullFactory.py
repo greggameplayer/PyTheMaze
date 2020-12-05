@@ -5,7 +5,6 @@ import random
 class redbullFactory(ObjetFactory):
 
     def creerInstance(self):
-        expnb = random.randint(5, 10)
-        return Redbull(expnb)
+        return Redbull()
 
 ObjetFactoryPrincipale.getInstance().registerFactory("redbull", redbullFactory())
