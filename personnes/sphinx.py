@@ -61,8 +61,8 @@ class Sphinx(Personnage):
             Sphinx.joueur.getCaseCourante().supprimerPersonnage(self.getInstance())
             Sphinx.joueur.reinitionalisationDecouverte()
         else:
-            print("Il vous manque encore " + str(10 - int(Sphinx.joueur.getCle())) + "!!!")
-            print("Continuer à les chercher")
+            print("Il vous manque encore " + str(10 - int(Sphinx.joueur.getCle())) + "clef !!!")
+            print("Continuer à les chercher...")
         input()
 
     def rencontrer(self):
