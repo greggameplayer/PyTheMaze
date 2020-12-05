@@ -73,7 +73,7 @@ class ActionManager:
                 j.perdreEnergie()
                 break
             except KeyError:
-                print("\n\nCommande inconnue, les seules commandes autorisées sont : ")
+                print("\nCommande inconnue, les seules commandes autorisées sont : ")
                 self.descriptionCommande()
             except ValueError as e:
                 print("\n" + e.__str__())

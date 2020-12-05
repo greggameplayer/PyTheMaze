@@ -22,6 +22,7 @@ class Joueur:
         self.nbCle = 0
         self.voler = False
         self.afficher = False
+        self.carte = True
 
     def getEnergie(self):
         """ Renvoie le niveau d'énergie du joueur. """

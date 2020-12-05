@@ -66,6 +66,8 @@ for i in range(20):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"), joueur)
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"), joueur)
 
+l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("sphinx"), joueur)
+
 
 while True:  # Effacer la console
     cls()
