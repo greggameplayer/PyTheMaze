@@ -1,4 +1,6 @@
 from labyrinthe.labyrinthe import Case
+from labyrinthe.labyrinthe import Labyrinthe
+from objetFactory import ObjetFactoryPrincipale
 
 
 class Joueur:
@@ -16,7 +18,7 @@ class Joueur:
         self.__symbole = symbole
         self.__symboleWindowsTerminal = symboleWindowsTerminal
         self.__energieMax = 70  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
-        self.__energie = 0
+        self.__energie = 70
         self._sac = []  # On commence avec un sac vide
         self.setEnergie(energieInitiale)
         self.nbCle = 0
@@ -62,6 +64,11 @@ class Joueur:
         if self.__caseCourante.estOuvertSud(): self.__caseCourante.getCaseSud().decouvrir()
         if self.__caseCourante.estOuvertEst(): self.__caseCourante.getCaseEst().decouvrir()
         if self.__caseCourante.estOuvertOuest(): self.__caseCourante.getCaseOuest().decouvrir()
+
+    def reinitionalisationDecouverte(self):
+        for case in Labyrinthe.getInstance().cases:
+            case.cacher()
+        self.__caseCourante.decouvrir()
 
     def getSymbole(self, isWindowsTerminal):
         if isWindowsTerminal:
@@ -109,9 +116,12 @@ class Joueur:
         else:
             raise ValueError("Pas de passage par là...")
 
-    def printEnergie(self):
+    def printEnergie(self, isWindowsTerminal):
         """ Petite fonction utilitaire pour afficher la jauge d'énergie sur la console. """
-        print(" ENERGIE " + ">" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
+        if isWindowsTerminal:
+            print(" ENERGIE " + "◼" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
+        else:
+            print(" ENERGIE " + ">" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
 
     def getSac(self):
         return self._sac
@@ -125,6 +135,11 @@ class Joueur:
 
     def perdreCle(self):
         self.nbCle -= 1
+        for obj in self.getSac():
+            if obj.__class__.__name__ == "Clef":
+                self.getSac().remove(obj)
+                break
+        Labyrinthe.getInstance().deposerObjetAleatoirement(ObjetFactoryPrincipale.getInstance().creerObjet("clef"), self.getInstance("", "", 100))
 
     def getCle(self):
         return self.nbCle
@@ -139,3 +154,14 @@ class Joueur:
 
     def getVoler(self):
         return self.voler
+
+    def energieChecker(self):
+        if self.__energie == 0:
+            print("""
+            .-----..---.-..--------..-----. .-----..--.--..-----..----.
+            |  _  ||  _  ||        ||  -__| |  _  ||  |  ||  -__||   _|
+            |___  ||___._||__|__|__||_____| |_____| \___/ |_____||__|
+            |_____|
+            """)
+            return True
+

@@ -24,7 +24,7 @@ class Perroquet(Personnage):
         print("Un perroquet "+self._couleur+" vous salue bien bas")
         input()
 
-    def parler(self):
+    def parler(self, joueur):
         """ Le perroquet répète ce qu'on lui dit avec son accent de perroquet (en accentuant les voyelles). """
         print("Peroquet "+self._couleur+": Saaaluuuut, noble aventuuurier. Quue me veuuuuux-tuuuuu ?")
         entree = input("#>")

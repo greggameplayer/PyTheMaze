@@ -1,6 +1,7 @@
 import random
 from labyrinthe.case import Case
 
+
 class Labyrinthe:
     """ La classe Labyrinthe représente un ensemble de cases ajencées entre elles pour former un labyrinthe.
     L'algorithme utilisé pour générer un Labyrinthe aléatoirement est celui de fusion aléatoire de chemin présentés
@@ -84,6 +85,8 @@ class Labyrinthe:
         case = random.choice(self.cases)
         while case == joueur.getCaseCourante():
             case = random.choice(self.cases)
+        while len(case.getObjets()) > 0:
+            case = random.choice(self.cases)
         case.ajouterObjet(objet)
 
     def deposerPersonneAleatoirement(self, personne, joueur):
@@ -92,6 +95,8 @@ class Labyrinthe:
         while case == joueur.getCaseCourante():
             case = random.choice(self.cases)
         while len(case.getPersonnages()) > 0:
+            case = random.choice(self.cases)
+        while len(case.getObjets()) > 0:
             case = random.choice(self.cases)
         case.ajouterPersonnage(personne)
 

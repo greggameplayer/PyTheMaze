@@ -5,16 +5,14 @@ class Redbull(ObjetRamassable):
     joueur = Joueur.getInstance("👤", "X", 100)
     """ Représente une potion qui redonne de l'énergie au joueur lorsqu'il la boit. """
 
-    def __init__(self, energie):
+    def __init__(self):
         """ Arguments :
         - energie : la quantité d'energie récupérée lorsque l'on utilise la potion
         """
-        self._energie = energie
         self._symboleWindowsTerminal = "🥫"
         self._symbole = "R"
 
     def utiliser(self):
-        Redbull.joueur.gagnerEnergie(self._energie)
         Redbull.joueur.boireRedbull()
         print("JE VOLE !")
         return True

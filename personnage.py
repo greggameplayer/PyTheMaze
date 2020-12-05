@@ -10,7 +10,7 @@ class Personnage:
         """ Cette méthode est appelée dès que le joueur arrive sur la même case que la personne."""
         raise AbstractMethodCallException(self.__class__.__name__, "rencontrer")  # Méthode abstraite
 
-    def parler(self):
+    def parler(self, joueur):
         """ Cette méthode est appelée lorsque le joueur fait l'action de parler avec la personne."""
         raise AbstractMethodCallException(self.__class__.__name__, "parler")  # Méthode abstraite
 

@@ -1,5 +1,6 @@
 import sys, os
 
+
 class Case:
     """ Une cse du labyrinthe.
     Une case possède au maxiumum 4 voisins, aux nord, sud, est et ouest. Seules les cases du bord n'ont pas de voisin, l'attribut correspondant est alors None.
@@ -69,11 +70,6 @@ class Case:
                         print(" " + self._joueur.getSymbole(True) + "", end="")  # Le joueur est présent
                     else:
                         print(" " + self._joueur.getSymbole(False) + " ", end="") # Le joueur est présent
-                elif len(self._personnages) > 0 and len(self._objets) > 0:
-                    if self.is_windows_terminal is not None:
-                        print(" 💠", end="")  # Il y a à la fois personnage(s) et objet(s)
-                    else:
-                        print(" % ", end="")  # Il y a à la fois personnage(s) et objet(s)
                 elif len(self._personnages) > 0:
                     if self.is_windows_terminal is not None:
                         print(f" {self._personnages[0].getSymbole(True)}", end="")  # Il n'y a que des personnages
@@ -152,6 +148,9 @@ class Case:
     def decouvrir(self):
         self.__decouvert = True
 
+    def cacher(self):
+        self.__decouvert = False
+
     def ajouterObjet(self, objet):
         """ Ajoute un objet dans la liste des objets présents sur la case
         :param objet: l'objet à ajouter
@@ -172,6 +171,9 @@ class Case:
         :return: rien
         """
         self._personnages.append(personnage)
+
+    def supprimerPersonnage(self, personnage):
+        self._personnages.remove(personnage)
 
     def getObjets(self):
         """ Renvoie la liste des objets présents sur la case. """
