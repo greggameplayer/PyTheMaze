@@ -47,3 +47,6 @@ class Sac(Action):
 
     def description(self):
         return "Permet de se regarfer l'inventaire de son sac"
+
+    def getType(self):
+        return self.getCategories()[1]

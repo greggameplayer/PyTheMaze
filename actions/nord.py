@@ -7,6 +7,10 @@ class Nord(Action):
 
     def execute(self):
         Nord.joueur.avancerNord()
+        Nord.joueur.perdreEnergie()
 
     def description(self):
         return "Permet d'aller au nord"
+
+    def getType(self):
+        return self.getCategories()[0]

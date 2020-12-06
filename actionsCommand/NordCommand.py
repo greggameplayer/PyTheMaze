@@ -10,6 +10,8 @@ class NordCommand(ActionManager):
     def description(self):
         return Nord().description()
 
+    def getType(self):
+        return Nord().getType()
 
 
 ActionManager.getInstance().registerCommand("z", NordCommand())

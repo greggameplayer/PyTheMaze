@@ -27,7 +27,7 @@ class Case:
         self.__caseOuest = None
 
         # Si la case a été découverte ou pas
-        self.__decouvert = False
+        self.__decouvert = True
 
         # Le joueur s'il est sur la case, None sinon
         self._joueur = None

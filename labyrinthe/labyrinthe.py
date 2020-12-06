@@ -12,9 +12,9 @@ class Labyrinthe:
     __instance = None
 
     @staticmethod
-    def getInstance():
+    def getInstance(tailleX=20, tailleY=10):
         if Labyrinthe.__instance is None:
-            Labyrinthe.__instance = Labyrinthe(20, 10)
+            Labyrinthe.__instance = Labyrinthe(tailleX, tailleY)
         return Labyrinthe.__instance
 
     @staticmethod
@@ -24,7 +24,7 @@ class Labyrinthe:
         ## Ex.: facile : 10x10, moyen : 20x20, difficile : 20x40
         pass
 
-    def __init__(self,tailleX, tailleY):
+    def __init__(self, tailleX, tailleY):
         """
         Construit un Labyrinthe de taille déterminée, en générant aléatoirement les chemins.
         :param tailleX: taille horizontale du labyrinthe, en nombre de cases
@@ -44,19 +44,18 @@ class Labyrinthe:
         # Positionnement des liens entre les cases
         for y in range(self.tailleY):
             for x in range(self.tailleX):
-                case = self.getCase(x,y)
-                if y > 0:                case.setCaseNord(self.getCase(x,y-1))
-                if y < self.tailleY - 1: case.setCaseSud(self.getCase(x, y+1))
-                if x > 0:                case.setCaseOuest(self.getCase(x-1,y))
-                if x < self.tailleX - 1: case.setCaseEst(self.getCase(x+1,y))
+                case = self.getCase(x, y)
+                if y > 0:                case.setCaseNord(self.getCase(x, y - 1))
+                if y < self.tailleY - 1: case.setCaseSud(self.getCase(x, y + 1))
+                if x > 0:                case.setCaseOuest(self.getCase(x - 1, y))
+                if x < self.tailleX - 1: case.setCaseEst(self.getCase(x + 1, y))
 
         # Lancement de l'algo pour ouvrir les murs et générer un vrai labyrinthe
         self.ouvrirMurs()
 
-
-    def getCase(self,x,y) -> Case:
+    def getCase(self, x, y) -> Case:
         """ Renvoie la case aux coordonnées X et Y. (0,0) correspond à la case en haut à gauche. On va vers la droite en augmentant X et vers le bas en augmentant Y. """
-        return self.cases[y*self.tailleX+x]
+        return self.cases[y * self.tailleX + x]
 
     def afficher(self):
         """ Affiche le labyrinthe.
@@ -65,16 +64,16 @@ class Labyrinthe:
         Case inférieure."""
         for y in range(self.tailleY):
             for x in range(self.tailleX):
-                self.getCase(x,y).afficher(1)
-            print("+\n",end="")
+                self.getCase(x, y).afficher(1)
+            print("+\n", end="")
             for x in range(self.tailleX):
-                self.getCase(x,y).afficher(2)
+                self.getCase(x, y).afficher(2)
             print("|\n", end="")
         for x in range(self.tailleX):
-            print("+---",end="")
-        print("|\n",end="")
+            print("+---", end="")
+        print("|\n", end="")
 
-    def deposerJoueurAleatoirement(self,joueur):
+    def deposerJoueurAleatoirement(self, joueur):
         """ Ajoute le joueur passé en paramètre sur une case du labyrinthe choisie aléatoirement. """
         case = random.choice(self.cases)
         case.ajouterJoueur(joueur)
@@ -83,24 +82,16 @@ class Labyrinthe:
     def deposerObjetAleatoirement(self, objet, joueur):
         """ Dépose l'objet passé en paramètre sur une case du labyrinthe choisie aléatoirement. """
         case = random.choice(self.cases)
-        while case == joueur.getCaseCourante():
-            case = random.choice(self.cases)
-        while len(case.getObjets()) > 0:
+        while case == joueur.getCaseCourante() or len(case.getObjets()) > 0 or len(case.getPersonnages()) > 0:
             case = random.choice(self.cases)
         case.ajouterObjet(objet)
 
     def deposerPersonneAleatoirement(self, personne, joueur):
         """ Dépose le personnage passé en paramètre sur une case du labyrinthe choisie aléatoirement. """
         case = random.choice(self.cases)
-        while case == joueur.getCaseCourante():
-            case = random.choice(self.cases)
-        while len(case.getPersonnages()) > 0:
-            case = random.choice(self.cases)
-        while len(case.getObjets()) > 0:
+        while case == joueur.getCaseCourante() or len(case.getPersonnages()) > 0 or len(case.getObjets()) > 0:
             case = random.choice(self.cases)
         case.ajouterPersonnage(personne)
-
-
 
     def ouvrirMurs(self):
         """ Implémente l'algorithme de génération du labyrinthe, en partant d'un labyrinthe dont tous les murs sont
@@ -108,32 +99,32 @@ class Labyrinthe:
         Cette méthode ne doit être appelée qu'une fois à l'intialisation du labyrinthe !
         """
         # Structure pour mémoriser les chemins créés
-        chemins = [*range(0,self.tailleX*self.tailleY)]
+        chemins = [*range(0, self.tailleX * self.tailleY)]
         # Structure pour memoriser les murs que l'on pourrait tenter d'ouvrir
         murs = []
-        for y in range(0,self.tailleY):
-            for x in range(0,self.tailleX):
-                if y > 0: murs.append({"x":x,"y":y,"pos":"nord"})
-                if x < self.tailleX - 1: murs.append({"x":x, "y":y, "pos":"est"})
+        for y in range(0, self.tailleY):
+            for x in range(0, self.tailleX):
+                if y > 0: murs.append({"x": x, "y": y, "pos": "nord"})
+                if x < self.tailleX - 1: murs.append({"x": x, "y": y, "pos": "est"})
 
         # On supprime des murs autant de fois que de cases moins 1
         nbMursSupprimes = 0
-        while nbMursSupprimes < self.tailleX*self.tailleY-1:
+        while nbMursSupprimes < self.tailleX * self.tailleY - 1:
             # Tirer un mur au hasard
             murASupprimer = random.choice(murs)
 
-            case = self.getCase(murASupprimer["x"],murASupprimer["y"])
+            case = self.getCase(murASupprimer["x"], murASupprimer["y"])
 
             if murASupprimer["pos"] == "nord":
                 # On supprime un mur haut
                 chemin1 = chemins[murASupprimer["y"] * self.tailleX + murASupprimer["x"]]
-                chemin2 = chemins[(murASupprimer["y"]-1) * self.tailleX + murASupprimer["x"]]
+                chemin2 = chemins[(murASupprimer["y"] - 1) * self.tailleX + murASupprimer["x"]]
 
                 if not case.estOuvertNord() and not chemin1 == chemin2:
                     # Condition1 : Le mur n'est pas déjà ouvert...
                     # Condition2 : les chemins ne sont pas identiques
-                    caseOrigine = self.getCase(murASupprimer["x"],murASupprimer["y"])
-                    caseDestination = self.getCase(murASupprimer["x"], murASupprimer["y"]-1)
+                    caseOrigine = self.getCase(murASupprimer["x"], murASupprimer["y"])
+                    caseDestination = self.getCase(murASupprimer["x"], murASupprimer["y"] - 1)
                     caseOrigine.ouvrirNord()
                     caseDestination.ouvrirSud()
                     # Mettre à jour les chemins
@@ -145,12 +136,12 @@ class Labyrinthe:
             elif murASupprimer["pos"] == "est":
                 # On supprime un mur haut
                 chemin1 = chemins[murASupprimer["y"] * self.tailleX + murASupprimer["x"]]
-                chemin2 = chemins[murASupprimer["y"] * self.tailleX + murASupprimer["x"]+1]
+                chemin2 = chemins[murASupprimer["y"] * self.tailleX + murASupprimer["x"] + 1]
 
                 if not case.estOuvertEst() and not chemin1 == chemin2:
                     # Les chemins sont différentsn on fusionne !
-                    caseOrigine = self.getCase(murASupprimer["x"],murASupprimer["y"])
-                    caseDestination = self.getCase(murASupprimer["x"]+1, murASupprimer["y"])
+                    caseOrigine = self.getCase(murASupprimer["x"], murASupprimer["y"])
+                    caseDestination = self.getCase(murASupprimer["x"] + 1, murASupprimer["y"])
                     caseOrigine.ouvrirEst()
                     caseDestination.ouvrirOuest()
                     # Mettre à jour les chemins
@@ -160,5 +151,3 @@ class Labyrinthe:
                     nbMursSupprimes += 1
 
             murs.remove(murASupprimer)
-
-

@@ -25,8 +25,9 @@ class Singe(Personnage):
             print("Oh nonnn, le singe vient de te piquer une clef !")
             Singe.joueur.perdreCle()
             print("Vous avez maintenant "+ str(Singe.joueur.nbCle) + " clef")
+            Singe.joueur.getCaseCourante().supprimerPersonnage(self)
         else:
-            print("Le singe vous dévisage")
+            print("Le singe vous dévisage..")
         input()
 
     def parler(self, joueur):

@@ -17,20 +17,19 @@ class Joueur:
         self.__caseCourante = Case()
         self.__symbole = symbole
         self.__symboleWindowsTerminal = symboleWindowsTerminal
-        self.__energieMax = 70  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
-        self.__energie = 70
+        self.__energieMax = 80  # TODO: mettre le niveau d'énergie max en fonction du paramétrage du jeu
+        self.__energie = energieInitiale
         self._sac = []  # On commence avec un sac vide
         self.setEnergie(energieInitiale)
         self.nbCle = 0
         self.voler = False
-        self.afficher = False
 
     def getEnergie(self):
         """ Renvoie le niveau d'énergie du joueur. """
         return self.__energie
 
     def setEnergie(self, valeur):
-        """ Fise l'energie du joueur à une valeur donnée, sans pouvoir dépasser le maximum autorisé. """
+        """ Fixe l'energie du joueur à une valeur donnée, sans pouvoir dépasser le maximum autorisé. """
         self.__energie = min(valeur, self.__energieMax)
 
     def perdreEnergie(self):
@@ -68,6 +67,11 @@ class Joueur:
     def reinitionalisationDecouverte(self):
         for case in Labyrinthe.getInstance().cases:
             case.cacher()
+        self.__caseCourante.decouvrir()
+
+    def toutDecouvrir(self):
+        for case in Labyrinthe.getInstance().cases:
+            case.decouvrir()
         self.__caseCourante.decouvrir()
 
     def getSymbole(self, isWindowsTerminal):
@@ -119,7 +123,7 @@ class Joueur:
     def printEnergie(self, isWindowsTerminal):
         """ Petite fonction utilitaire pour afficher la jauge d'énergie sur la console. """
         if isWindowsTerminal:
-            print(" ENERGIE " + "◼" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
+            print(" ENERGIE " + "◼" * self.__energie + (" " * (self.__energieMax - self.__energie)) + "|")
         else:
             print(" ENERGIE " + ">" * self.__energie + " " * (self.__energieMax - self.__energie) + "|")
 

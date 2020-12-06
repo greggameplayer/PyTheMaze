@@ -7,5 +7,10 @@ class Ouest(Action):
 
     def execute(self):
         Ouest.joueur.avancerOuest()
+        Ouest.joueur.perdreEnergie()
+
     def description(self):
         return "Permet de se déplacer vers l'Ouest"
+
+    def getType(self):
+        return self.getCategories()[0]

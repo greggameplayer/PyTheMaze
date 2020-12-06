@@ -16,3 +16,7 @@ class Parler(Action):
     
     def description(self):
         return "Permet de parler à un pnj"
+
+    def getType(self):
+        return self.getCategories()[1]
+

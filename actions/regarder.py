@@ -26,3 +26,6 @@ class Regarder(Action):
 
     def description(self):
         return "Permet de regarder autour de soi"
+
+    def getType(self):
+        return self.getCategories()[1]

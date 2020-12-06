@@ -10,4 +10,8 @@ class HelpCommand(ActionManager):
     def description(self):
         return Help().description()
 
+    def getType(self):
+        return Help().getType()
+
+
 ActionManager.getInstance().registerCommand("help", HelpCommand())

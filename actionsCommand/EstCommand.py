@@ -10,4 +10,8 @@ class EstCommand(ActionManager):
     def description(self):
         return Est().description()
 
+    def getType(self):
+        return Est().getType()
+
+
 ActionManager.getInstance().registerCommand("d", EstCommand())

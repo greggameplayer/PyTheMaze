@@ -1,3 +1,4 @@
+from configMenu import ConfigMenu
 from labyrinthe.labyrinthe import Labyrinthe
 from joueur import Joueur
 
@@ -43,10 +44,27 @@ input("   Appuyer sur 'Entrée' pour entrer dans le labyrinthe")
 
 cls()
 
-# Création des objets
-# TODO: récupérer les attributs via un menu de configuration
-joueur = Joueur.getInstance("👤", "X", 100)
-l = Labyrinthe.getInstance()
+difficultyChoice = int(ConfigMenu().ask())
+
+if difficultyChoice == 1:
+    joueur = Joueur.getInstance("👤", "X", 70)
+    monsterSpawnRate = 2
+    potionRate = 40
+    redbullRate = 20
+    l = Labyrinthe.getInstance(20, 10)
+elif difficultyChoice == 2:
+    joueur = Joueur.getInstance("👤", "X", 60)
+    monsterSpawnRate = 4
+    potionRate = 30
+    redbullRate = 15
+    l = Labyrinthe.getInstance(30, 20)
+else:
+    joueur = Joueur.getInstance("👤", "X", 55)
+    monsterSpawnRate = 8
+    potionRate = 25
+    redbullRate = 10
+    l = Labyrinthe.getInstance(30, 30)
+
 l.deposerJoueurAleatoirement(joueur)
 factoryObjet = ObjetFactoryPrincipale.getInstance()
 factoryObjet.loadFactoryPlugins()
@@ -56,22 +74,27 @@ actionManager = ActionManager.getInstance()
 actionManager.loadActionPlugins()
 
 # Generation de 35 potions aléatoirement
-for i in range(35):
+for i in range(potionRate):
     l.deposerObjetAleatoirement(factoryObjet.creerObjet("potion"), joueur)
 
-for i in range(10):
+for i in range(redbullRate):
     l.deposerObjetAleatoirement(factoryObjet.creerObjet("redbull"), joueur)
 
-for i in range(15):
+for i in range(12):
     l.deposerObjetAleatoirement(factoryObjet.creerObjet("clef"), joueur)
 
 # Ajouter des perroquets un peu partout
-for i in range(20):
+for i in range(15):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("perroquet"), joueur)
 for i in range(10):
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("clown"), joueur)
+for i in range(monsterSpawnRate):
     l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("singe"), joueur)
+    l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("crocodile"), joueur)
 
 l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("sphinx"), joueur)
+l.deposerObjetAleatoirement(factoryObjet.creerObjet("crane"), joueur)
+l.deposerPersonneAleatoirement(factoryPersonne.creerPersonne("indiana"), joueur)
 
 
 while True:  # Effacer la console

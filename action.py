@@ -16,6 +16,9 @@ class Action:
         """Abstraite"""
         raise AbstractMethodCallException(self.__class__.__name__, "description")
 
+    def getCategories(self):
+        return ["déplacement", "autre(s)"]
+
 
 class ActionManager:
     __instance = None
@@ -43,21 +46,23 @@ class ActionManager:
         return self.actions[cmd].execute()
 
     def descriptionCommande(self):
-        for key, val in self.actions.items():
-            print('-' + key +' : '+ val.description())
+        for categorie in Action().getCategories():
+            print(f"\n\n--     {categorie}     --\n")
+            for key, val in self.actions.items():
+                if val.getType() == categorie:
+                    print('- ' + key + ' : ' + val.description())
 
     def afficherCommandesDispo(self):
         arrayCommandes = []
         for commande in self.actions.items():
-           arrayCommandes.append(commande[0])
-        commandes ="Commandes disponibles : "
+            arrayCommandes.append(commande[0])
+        commandes = "Commandes disponibles : "
         for i in range(0, len(arrayCommandes)):
-            if i != len(arrayCommandes)-1:
+            if i != len(arrayCommandes) - 1:
                 commandes += arrayCommandes[i] + ", "
             else:
                 commandes += arrayCommandes[i] + "."
         print(commandes)
-
 
     def jouer(self):
         j = Joueur.getInstance("👤", "X", 100)
@@ -71,7 +76,6 @@ class ActionManager:
             choix = input()
             try:
                 self.executer(choix)
-                j.perdreEnergie()
                 break
             except KeyError:
                 print("\nCommande inconnue, les seules commandes autorisées sont : ")
@@ -79,4 +83,3 @@ class ActionManager:
             except ValueError as e:
                 print("\n" + e.__str__())
                 self.afficherCommandesDispo()
-
