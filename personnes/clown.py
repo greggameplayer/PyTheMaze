@@ -5,6 +5,13 @@ class Clown(Personnage):
     avec une blague. Le clown a une blague qu'on lui passe à la création dans le constructeur. """
 
     def __init__(self, blague):
+        """
+        Initialize all symbols.
+
+        Args:
+            self: (todo): write your description
+            blague: (str): write your description
+        """
     
         self._symbole = "W"
         self._symboleWindowsTerminal = "🤡"
@@ -29,6 +36,13 @@ class Clown(Personnage):
             pass
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

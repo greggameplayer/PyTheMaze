@@ -14,6 +14,11 @@ class Sphinx(Personnage):
 
     @staticmethod
     def getInstance():
+        """
+        Return the sphinx documentation
+
+        Args:
+        """
         if Sphinx.__instance is None:
             Sphinx.__instance = Sphinx()
         return Sphinx.__instance
@@ -38,6 +43,13 @@ class Sphinx(Personnage):
         return "L'animal mythologique représentant votre liberté!!!"
 
     def parler(self, joueur):
+        """
+        Runs a sphinx program.
+
+        Args:
+            self: (todo): write your description
+            joueur: (int): write your description
+        """
         if Sphinx.joueur.getCle() >= 10:
             print("*le Sphinx vous pose une question pour verifier la légitimité de votre liberté...*")
             question = random.choice(list(self._questions.keys()))
@@ -66,9 +78,22 @@ class Sphinx(Personnage):
         input()
 
     def rencontrer(self):
+        """
+        Rencontrer.
+
+        Args:
+            self: (todo): write your description
+        """
         pass
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

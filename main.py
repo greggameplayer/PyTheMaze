@@ -12,6 +12,11 @@ import os, sys
 
 
 def cls():
+    """
+    Return the system class.
+
+    Args:
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 

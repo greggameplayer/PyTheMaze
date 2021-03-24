@@ -13,6 +13,13 @@ class Labyrinthe:
 
     @staticmethod
     def getInstance(tailleX=20, tailleY=10):
+        """
+        Returns the last instance
+
+        Args:
+            tailleX: (str): write your description
+            tailleY: (str): write your description
+        """
         if Labyrinthe.__instance is None:
             Labyrinthe.__instance = Labyrinthe(tailleX, tailleY)
         return Labyrinthe.__instance

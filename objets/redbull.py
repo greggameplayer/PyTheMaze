@@ -13,14 +13,33 @@ class Redbull(ObjetRamassable):
         self._symbole = "R"
 
     def utiliser(self):
+        """
+        Disconnects the joueur
+
+        Args:
+            self: (todo): write your description
+        """
         Redbull.joueur.boireRedbull()
         print("JE VOLE !")
         return True
 
     def description(self):
+        """
+        Return the description of this command.
+
+        Args:
+            self: (todo): write your description
+        """
         return "REDBULL donne des aileeees"
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

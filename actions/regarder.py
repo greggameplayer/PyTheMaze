@@ -7,6 +7,12 @@ class Regarder(Action):
     joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+        """
         case = Regarder.joueur.getCaseCourante()
         personnages = case.getPersonnages()
         objets = case.getObjets()
@@ -25,7 +31,19 @@ class Regarder(Action):
         input()
 
     def description(self):
+        """
+        Return the description of this command.
+
+        Args:
+            self: (todo): write your description
+        """
         return "Permet de regarder autour de soi"
 
     def getType(self):
+        """
+        Returns the type of the type
+
+        Args:
+            self: (todo): write your description
+        """
         return self.getCategories()[1]

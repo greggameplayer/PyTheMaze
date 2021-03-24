@@ -8,11 +8,22 @@ class Indiana(Personnage):
 
     @staticmethod
     def getInstance():
+        """
+        Return a single instance of this instance
+
+        Args:
+        """
         if Indiana.__instance is None:
             Indiana.__instance = Indiana()
         return Indiana.__instance
 
     def __init__(self):
+        """
+        Initialize the symbol.
+
+        Args:
+            self: (todo): write your description
+        """
         self._symbole = "I"
         self._symboleWindowsTerminal = "🤠"
 
@@ -21,6 +32,12 @@ class Indiana(Personnage):
         return "Un Indiana"
 
     def rencontrer(self):
+        """
+        [ summary ]
+
+        Args:
+            self: (todo): write your description
+        """
         print("Le célébre Indiana Jones vous salue !")
         print("Si vous avez le crâne de crystal il vous donnera la carte")
 
@@ -37,6 +54,13 @@ class Indiana(Personnage):
         input()
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:
