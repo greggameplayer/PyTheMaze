@@ -6,6 +6,12 @@ class Ramasser(Action):
     joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
+        """
+        Executes the case.
+
+        Args:
+            self: (todo): write your description
+        """
         case = Ramasser.joueur.getCaseCourante()
         if len(case.getObjets()) == 0:
             print("Mais... il n'y a rien à ramasser !")
@@ -32,8 +38,20 @@ class Ramasser(Action):
         input()
 
     def description(self):
+        """
+        Return the description of this command.
+
+        Args:
+            self: (todo): write your description
+        """
         return "Permet de ramasser un objet"
 
     def getType(self):
+        """
+        Returns the type of the type
+
+        Args:
+            self: (todo): write your description
+        """
         return self.getCategories()[1]
 

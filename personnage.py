@@ -19,4 +19,11 @@ class Personnage:
         raise AbstractMethodCallException(self.__class__.__name__, "description")  # Méthode abstraite
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Gets the class by name.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         raise AbstractMethodCallException(self.__class__.__name__, "getSymbole")  # Méthode abstraite

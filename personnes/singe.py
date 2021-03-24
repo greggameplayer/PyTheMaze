@@ -20,6 +20,12 @@ class Singe(Personnage):
         return "Un singe"
 
     def rencontrer(self):
+        """
+        Rencontrer input
+
+        Args:
+            self: (todo): write your description
+        """
         #Vole une clé au joueur
         if Singe.joueur.getCle() !=0:
             print("Oh nonnn, le singe vient de te piquer une clef !")
@@ -31,9 +37,23 @@ class Singe(Personnage):
         input()
 
     def parler(self, joueur):
+        """
+        Æł¥è¯¢æīĳľçº¿
+
+        Args:
+            self: (todo): write your description
+            joueur: (int): write your description
+        """
         print("wouuuuuaaaaaInInIn WWWoouaaaahhInInInIn !!!")
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

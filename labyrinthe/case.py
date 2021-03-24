@@ -13,6 +13,12 @@ class Case:
     """
 
     def __init__(self):
+        """
+        Initialize the instance.
+
+        Args:
+            self: (todo): write your description
+        """
         # Les booleans qui indiquent s'il y a des murs ou pas (initialement tout fermé)
         self.__ouvertNord = False
         self.__ouvertSud = False
@@ -90,65 +96,183 @@ class Case:
 
     # Getters pour récupérer les cases voisines
     def getCaseNord(self):
+        """
+        Returns the first nord object : class : nord. nord.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__caseNord
 
     def getCaseSud(self):
+        """
+        Returns the udf type
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__caseSud
 
     def getCaseEst(self):
+        """
+        Returns a list of all available case
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__caseEst
 
     def getCaseOuest(self):
+        """
+        Returns the case of - link.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__caseOuest
 
     # Setters pour positionner les cases voisines
     def setCaseNord(self, caseDestination):
+        """
+        Sets the nordination.
+
+        Args:
+            self: (todo): write your description
+            caseDestination: (str): write your description
+        """
         self.__caseNord = caseDestination
 
     def setCaseSud(self, caseDestination):
+        """
+        Sets the case case.
+
+        Args:
+            self: (todo): write your description
+            caseDestination: (str): write your description
+        """
         self.__caseSud = caseDestination
 
     def setCaseEst(self, caseDestination):
+        """
+        Sets the case that will be used to the inputed case. : param case | <int >
+
+        Args:
+            self: (todo): write your description
+            caseDestination: (str): write your description
+        """
         self.__caseEst = caseDestination
 
     def setCaseOuest(self, caseDestination):
+        """
+        Sets the test case.
+
+        Args:
+            self: (todo): write your description
+            caseDestination: (str): write your description
+        """
         self.__caseOuest = caseDestination
 
     # Getters pour récupérer la présence ou non de mur
     def estOuvertNord(self):
+        """
+        Estimate norduuvert of - order.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__ouvertNord
 
     def estOuvertSud(self):
+        """
+        Estimate the convex - like nduuvert of - order.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__ouvertSud
 
     def estOuvertEst(self):
+        """
+        : returns : py : numpy. ndarray
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__ouvertEst
 
     def estOuvertOuest(self):
+        """
+        Estimate the convexuuuest as a numpy array.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__ouvertOuest
 
     # Setters pour ouvrir un mur
     def ouvrirNord(self):
+        """
+        Sets the nord. nord.
+
+        Args:
+            self: (todo): write your description
+        """
         self.__ouvertNord = True
 
     def ouvrirSud(self):
+        """
+        [ float ]
+
+        Args:
+            self: (todo): write your description
+        """
         self.__ouvertSud = True
 
     def ouvrirEst(self):
+        """
+        Ouvrir
+
+        Args:
+            self: (todo): write your description
+        """
         self.__ouvertEst = True
 
     def ouvrirOuest(self):
+        """
+        Èi̇·åıĸæįĩå®ļåħ³»åĭ¡
+
+        Args:
+            self: (todo): write your description
+        """
         self.__ouvertOuest = True
 
     # Getter pour savoir si la case est déjà découverte ou non
     def estDecouvert(self):
+        """
+        Estimate the decouvert value.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.__decouvert
 
     # Setter pour passer l'attribut _decouvert à True (case découverte)
     def decouvrir(self):
+        """
+        Decouvrir.
+
+        Args:
+            self: (todo): write your description
+        """
         self.__decouvert = True
 
     def cacher(self):
+        """
+        Cacher. cacher.
+
+        Args:
+            self: (todo): write your description
+        """
         self.__decouvert = False
 
     def ajouterObjet(self, objet):
@@ -173,6 +297,13 @@ class Case:
         self._personnages.append(personnage)
 
     def supprimerPersonnage(self, personnage):
+        """
+        Removes the person.
+
+        Args:
+            self: (todo): write your description
+            personnage: (str): write your description
+        """
         self._personnages.remove(personnage)
 
     def getObjets(self):

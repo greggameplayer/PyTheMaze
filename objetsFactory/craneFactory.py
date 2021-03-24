@@ -5,6 +5,12 @@ from objets.crane import Crane
 class craneFactory(ObjetFactory):
 
     def creerInstance(self):
+        """
+        Return the current : classane.
+
+        Args:
+            self: (todo): write your description
+        """
         return Crane.getInstance()
 
 

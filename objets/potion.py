@@ -15,14 +15,33 @@ class Potion(ObjetRamassable):
         self._symbole = "."
 
     def utiliser(self):
+        """
+        Prints the gag of the gagner.
+
+        Args:
+            self: (todo): write your description
+        """
         Potion.joueur.gagnerEnergie(self._energie)
         print("J'ai récupéré " + str(self._energie) + " point(s) d'énergie ! Je pète le feu !!")
         return True
 
     def description(self):
+        """
+        Str : str : the description.
+
+        Args:
+            self: (todo): write your description
+        """
         return "Potion de "+str(self._energie)+" énergie(s)."
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

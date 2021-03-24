@@ -35,6 +35,13 @@ class Crocodile(Personnage):
         input()
 
     def getSymbole(self, isWindowsTerminal):
+        """
+        Returns the integral of a given character.
+
+        Args:
+            self: (todo): write your description
+            isWindowsTerminal: (bool): write your description
+        """
         if isWindowsTerminal:
             return self._symboleWindowsTerminal
         else:

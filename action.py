@@ -17,6 +17,12 @@ class Action:
         raise AbstractMethodCallException(self.__class__.__name__, "description")
 
     def getCategories(self):
+        """
+        Return a list of categories.
+
+        Args:
+            self: (todo): write your description
+        """
         return ["déplacement", "autre(s)"]
 
 
@@ -25,14 +31,33 @@ class ActionManager:
 
     @staticmethod
     def getInstance():
+        """
+        Return a : class : class : ~django. base. base. base. base.
+
+        Args:
+        """
         if ActionManager.__instance is None:
             ActionManager.__instance = ActionManager()
         return ActionManager.__instance
 
     def __init__(self):
+        """
+        Initialize actions
+
+        Args:
+            self: (todo): write your description
+        """
         self.actions = {}
 
     def registerCommand(self, cmd, instanceAction):
+        """
+        Registers an instance command.
+
+        Args:
+            self: (todo): write your description
+            cmd: (str): write your description
+            instanceAction: (todo): write your description
+        """
         self.actions[cmd] = instanceAction
 
     def loadActionPlugins(self):
@@ -43,9 +68,22 @@ class ActionManager:
                 import_module("actionsCommand." + file[:-3])
 
     def executer(self, cmd):
+        """
+        Execute a command.
+
+        Args:
+            self: (todo): write your description
+            cmd: (str): write your description
+        """
         return self.actions[cmd].execute()
 
     def descriptionCommande(self):
+        """
+        Print the description
+
+        Args:
+            self: (todo): write your description
+        """
         for categorie in Action().getCategories():
             print(f"\n\n--     {categorie}     --\n")
             for key, val in self.actions.items():
@@ -53,6 +91,12 @@ class ActionManager:
                     print('- ' + key + ' : ' + val.description())
 
     def afficherCommandesDispo(self):
+        """
+        Afficherherhericheres for this toolbar
+
+        Args:
+            self: (todo): write your description
+        """
         arrayCommandes = []
         for commande in self.actions.items():
             arrayCommandes.append(commande[0])
@@ -65,6 +109,12 @@ class ActionManager:
         print(commandes)
 
     def jouer(self):
+        """
+        Execute jouer
+
+        Args:
+            self: (todo): write your description
+        """
         j = Joueur.getInstance("👤", "X", 100)
         l = Labyrinthe.getInstance()
         j.printEnergie(sys.platform == "win32" and os.environ.get("WT_SESSION"))

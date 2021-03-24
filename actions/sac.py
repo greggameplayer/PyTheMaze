@@ -6,6 +6,12 @@ class Sac(Action):
     joueur = Joueur.getInstance("👤", "X", 100)
 
     def execute(self):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+        """
         sac = Sac.joueur.getSac()
         if(len(sac)) == 0:
             print("Le sac est vide")
@@ -46,7 +52,19 @@ class Sac(Action):
                         print("\nWhere is the item ? \nIt is not in the list !\n")
 
     def description(self):
+        """
+        Return the description of this command.
+
+        Args:
+            self: (todo): write your description
+        """
         return "Permet de se regarfer l'inventaire de son sac"
 
     def getType(self):
+        """
+        Returns the type of the type
+
+        Args:
+            self: (todo): write your description
+        """
         return self.getCategories()[1]
